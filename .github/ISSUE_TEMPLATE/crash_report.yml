@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Crashes often write `leafkit_crash.log` next to the app (or project folder).
+        Crashes often write `sekikit_crash.log` next to the app (or project folder).
 
         **About → Copy diagnostics** includes the last crash log lines (if any).
 
@@ -23,7 +23,7 @@ body:
   - type: input
     id: version
     attributes:
-      label: Leafkit version
+      label: Sekikit version
       placeholder: "0.13.1"
     validations:
       required: true
@@ -44,9 +44,9 @@ body:
   - type: dropdown
     id: how_run
     attributes:
-      label: How did you run Leafkit?
+      label: How did you run Sekikit?
       options:
-        - Packaged .exe (dist/Leafkit)
+        - Packaged .exe (dist/Sekikit)
         - Source / launch.bat
         - Other
     validations:
@@ -65,7 +65,7 @@ body:
     id: crash_raw
     attributes:
       label: Crash log (if not in diagnostics)
-      description: Paste contents of leafkit_crash.log if you have it.
+      description: Paste contents of sekikit_crash.log if you have it.
       render: text
     validations:
       required: false

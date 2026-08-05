@@ -1,5 +1,5 @@
 # Build Windows install-and-play Setup.exe (Inno Setup 6+).
-# 1) PyInstaller onedir  2) compile Leafkit.iss
+# 1) PyInstaller onedir  2) compile Sekikit.iss
 # Requires: Inno Setup 6 (https://jrsoftware.org/isinfo.php)
 #   Default: "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
 $ErrorActionPreference = "Stop"
@@ -11,13 +11,13 @@ if (-not (Test-Path $venvPython)) {
     throw "Create .venv and install requirements first."
 }
 
-$ver = (& $venvPython -c "from leafkit import __version__; print(__version__)").Trim()
-Write-Host "=== Leafkit $ver - Windows installer ==="
+$ver = (& $venvPython -c "from sekikit import __version__; print(__version__)").Trim()
+Write-Host "=== Sekikit $ver - Windows installer ==="
 
 # Always rebuild packaged app so Setup matches source
 & (Join-Path $Root "scripts\build_exe.ps1")
 
-$onedir = Join-Path $Root "dist\Leafkit\Leafkit.exe"
+$onedir = Join-Path $Root "dist\Sekikit\Sekikit.exe"
 if (-not (Test-Path $onedir)) {
     throw "Missing $onedir after build_exe.ps1"
 }
@@ -44,7 +44,7 @@ if ($isccCandidates.Count -eq 0) {
 }
 
 $iscc = $isccCandidates[0]
-$iss = Join-Path $Root "installer\Leafkit.iss"
+$iss = Join-Path $Root "installer\Sekikit.iss"
 $outDir = Join-Path $Root "dist\installer"
 New-Item -ItemType Directory -Force -Path $outDir | Out-Null
 
@@ -65,7 +65,7 @@ Write-Host "Compiling installer with $iscc (AppVersion=$ver, VersionInfo=$verInf
 & $iscc "/DMyAppVersion=$ver" "/DMyAppVersionInfo=$verInfo" $iss
 if ($LASTEXITCODE -ne 0) { throw "ISCC failed with $LASTEXITCODE" }
 
-$setup = Get-ChildItem $outDir -Filter "Leafkit-*-Setup.exe" | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+$setup = Get-ChildItem $outDir -Filter "Sekikit-*-Setup.exe" | Sort-Object LastWriteTime -Descending | Select-Object -First 1
 if (-not $setup) { throw "Setup.exe not produced in $outDir" }
 
 $hash = (Get-FileHash $setup.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
@@ -81,5 +81,5 @@ Write-Host ""
 Write-Host "User expectations met:"
 Write-Host "  - Double-click Setup -> wizard -> Start Menu launch"
 Write-Host "  - Uninstall via Windows Settings -> Apps"
-Write-Host "  - Data in %LOCALAPPDATA%\Leafkit (survives reinstall)"
+Write-Host "  - Data in %LOCALAPPDATA%\Sekikit (survives reinstall)"
 Write-Host "  - Sign Setup.exe when you have a code-signing certificate"

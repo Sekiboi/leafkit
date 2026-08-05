@@ -1,4 +1,4 @@
-# Translating Leafkit (community)
+# Translating Sekikit (community)
 
 English is the source language. Other languages are welcome as community contributions.
 
@@ -9,7 +9,7 @@ English is the source language. Other languages are welcome as community contrib
    - `en.json` — complete English map (`"English": "English"`)
    - `fr.json`, `de.json`, … — only **translated** strings (English key → local text)
 3. Language is chosen automatically from:
-   1. Environment variable **`LEAFKIT_LANG`** (e.g. `fr`, `de`, `es`)
+   1. Environment variable **`SEKIKIT_LANG`** (e.g. `fr`, `de`, `es`)
    2. OS / `LANG` locale
    3. Fallback: **`en`**
 
@@ -37,7 +37,7 @@ Missing keys always fall back to English.
 
 4. Test locally (Windows PowerShell):
    ```powershell
-   $env:LEAFKIT_LANG = "fr"
+   $env:SEKIKIT_LANG = "fr"
    pythonw run.py
    ```
 
@@ -61,7 +61,7 @@ python scripts/apply_i18n_wrappers.py
 
 - Prefer clear, short UI phrases.
 - Keep keyboard shortcuts as-is (`Ctrl+O`, `F1`, …).
-- Do not translate file formats (`PDF`) or product name **Leafkit** unless a locale strongly expects it.
+- Do not translate file formats (`PDF`) or product name **Sekikit** unless a locale strongly expects it.
 - Tab names (`Merge`, `Share`, …) are currently English API keys; translating them needs a code change — ask maintainers first.
 - No machine-only dumps without human review, please.
 
@@ -71,4 +71,4 @@ python scripts/apply_i18n_wrappers.py
 - Ship `locales/` inside the Windows build (`--add-data locales;locales`).
 - Do not block releases on incomplete translations.
 
-Thank you for helping Leafkit stay free for everyone, in every language.
+Thank you for helping Sekikit stay free for everyone, in every language.

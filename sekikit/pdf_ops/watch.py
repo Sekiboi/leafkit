@@ -3,20 +3,20 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from leafkit.pdf_ops._core import (
+from sekikit.pdf_ops._core import (
     PasswordProvider,
     PdfOpsError,
     _assert_not_overwrite_inputs,
     _ensure_pdf,
 )
-from leafkit.pdf_ops.compress import compress_pdf
-from leafkit.pdf_ops.pagenum import (
+from sekikit.pdf_ops.compress import compress_pdf
+from sekikit.pdf_ops.pagenum import (
     WATCH_ACTIONS,
     add_page_numbers,
     flatten_forms,
     renumber_pages,
 )
-from leafkit.pdf_ops.transform import clean_metadata, grayscale_pdf
+from sekikit.pdf_ops.transform import clean_metadata, grayscale_pdf
 
 def watch_process_file(
     src: Path | str,
@@ -103,7 +103,7 @@ def list_watch_pdfs(folder: Path | str) -> list[Path]:
     try:
         for p in sorted(d.iterdir()):
             if p.is_file() and p.suffix.lower() == ".pdf":
-                if p.name.startswith(".leafkit-"):
+                if p.name.startswith(".sekikit-"):
                     continue
                 found.append(p)
     except OSError as exc:

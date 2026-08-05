@@ -4,4 +4,4 @@ Offline PDF tools for Windows. Free forever. No uploads. No paid features. Engli
 
 === Optional longer subtitle / website blurb ===
 
-Leafkit is free offline software for common PDF tasks (merge, split, organize, compress, and more). Your files stay on your computer. The interface is in English. Additional languages can be requested or contributed by the community.
+Sekikit is free offline software for common PDF tasks (merge, split, organize, compress, and more). Your files stay on your computer. The interface is in English. Additional languages can be requested or contributed by the community.

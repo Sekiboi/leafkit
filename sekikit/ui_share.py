@@ -1,4 +1,4 @@
-"""Share tab tools (mixin for LeafkitApp)."""
+"""Share tab tools (mixin for SekikitApp)."""
 
 from __future__ import annotations
 
@@ -9,11 +9,11 @@ from typing import Callable
 
 import customtkinter as ctk
 
-from leafkit import __app_name__
-from leafkit import batch as batch_ops
-from leafkit import pdf_ops
-from leafkit.i18n import _
-from leafkit.ui_constants import PAGENUM_PRESETS as _PAGENUM_PRESETS
+from sekikit import __app_name__
+from sekikit import batch as batch_ops
+from sekikit import pdf_ops
+from sekikit.i18n import _
+from sekikit.ui_constants import PAGENUM_PRESETS as _PAGENUM_PRESETS
 
 
 class ShareTabMixin:
@@ -818,7 +818,7 @@ class ShareTabMixin:
                 messagebox.showinfo(
                     __app_name__,
                     "No selectable text found.\n\n"
-                    "Scanned/image-only PDFs need OCR, which Leafkit does not do.",
+                    "Scanned/image-only PDFs need OCR, which Sekikit does not do.",
                 )
             else:
                 self._set_status(f"Copied {n} characters of text.")
@@ -894,7 +894,7 @@ class ShareTabMixin:
         src = self._require_selected()
         if src is None:
             return
-        from leafkit import crop_ui
+        from sekikit import crop_ui
 
         choice = crop_ui.run_crop_dialog(self, src, password=self._password())
         if choice is None:

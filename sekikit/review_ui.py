@@ -10,9 +10,9 @@ from typing import Callable
 
 import customtkinter as ctk
 
-from leafkit import render as pdf_render
-from leafkit import tooltips
-from leafkit.i18n import _
+from sekikit import render as pdf_render
+from sekikit import tooltips
+from sekikit.i18n import _
 
 
 class ReviewResultDialog(ctk.CTkToplevel):
@@ -191,7 +191,7 @@ class ReviewResultDialog(ctk.CTkToplevel):
             return
         path = self._paths[self._file_i]
         label = path.name
-        if label.startswith(".leafkit-review-"):
+        if label.startswith(".sekikit-review-"):
             label = _("Review draft (not saved yet)")
         self.meta_lbl.configure(text=label)
         if not pdf_render.has_renderer():

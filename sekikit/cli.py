@@ -1,4 +1,4 @@
-"""Leafkit command-line interface — offline, free forever.
+"""Sekikit command-line interface — offline, free forever.
 
 All mutating commands go through jobs.run_job (log + warnings).
 """
@@ -10,9 +10,9 @@ import sys
 from pathlib import Path
 from typing import Any, Callable
 
-from leafkit import __app_name__, __version__
-from leafkit import jobs
-from leafkit import pdf_ops
+from sekikit import __app_name__, __version__
+from sekikit import jobs
+from sekikit import pdf_ops
 
 
 def _run(
@@ -49,7 +49,7 @@ def _cmd_info(args: argparse.Namespace) -> int:
     print(f"{path}")
     print(f"  pages: {n}")
     print(f"  size:  {size} bytes ({size // 1024} KB)")
-    print(f"  leafkit: {__version__}")
+    print(f"  sekikit: {__version__}")
     return 0
 
 
@@ -635,7 +635,7 @@ def _cmd_watch(args: argparse.Namespace) -> int:
 
 
 def _cmd_gui(_args: argparse.Namespace) -> int:
-    from leafkit.app import main as gui_main
+    from sekikit.app import main as gui_main
 
     gui_main()
     return 0
@@ -643,7 +643,7 @@ def _cmd_gui(_args: argparse.Namespace) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        prog="leafkit",
+        prog="sekikit",
         description=f"{__app_name__} — offline PDF toolkit (free forever).",
     )
     p.add_argument("--version", action="version", version=f"{__app_name__} {__version__}")

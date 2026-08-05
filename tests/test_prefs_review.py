@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from leafkit import prefs
+from sekikit import prefs
 
 
 def test_default_review_mode() -> None:
@@ -74,7 +74,7 @@ def test_diagnostics_and_first_run_persist(tmp_path: Path, monkeypatch) -> None:
 
 
 def test_user_data_dir_source(tmp_path: Path, monkeypatch) -> None:
-    # Source mode: project root (parent of leafkit package)
+    # Source mode: project root (parent of sekikit package)
     d = prefs.user_data_dir()
     assert d.is_dir()
-    assert (d / "leafkit").is_dir() or (d / "pyproject.toml").is_file() or d.exists()
+    assert (d / "sekikit").is_dir() or (d / "pyproject.toml").is_file() or d.exists()

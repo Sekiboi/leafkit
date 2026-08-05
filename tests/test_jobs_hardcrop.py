@@ -6,8 +6,8 @@ from pathlib import Path
 
 from PIL import Image
 
-from leafkit import jobs
-from leafkit import pdf_ops
+from sekikit import jobs
+from sekikit import pdf_ops
 from tests.fixtures import make_messy
 
 
@@ -84,7 +84,7 @@ def test_run_job_validate_password_counts_encrypted(tmp_path: Path, monkeypatch)
 
 def test_org_session_prune_logic() -> None:
     """Prune keeps only live tray sources and respects max open handles."""
-    from leafkit.ui_organize import OrganizeTabMixin
+    from sekikit.ui_organize import OrganizeTabMixin
 
     class Fake(OrganizeTabMixin):
         def __init__(self) -> None:

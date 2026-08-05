@@ -1,5 +1,5 @@
 # Build a LOCAL release folder (zip + SHA256). Does NOT publish or push.
-# Output: release\Leafkit-<version>\
+# Output: release\Sekikit-<version>\
 $ErrorActionPreference = "Stop"
 $Root = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 Set-Location $Root
@@ -7,23 +7,23 @@ Set-Location $Root
 $venvPython = Join-Path $Root ".venv\Scripts\python.exe"
 if (-not (Test-Path $venvPython)) { throw "Create .venv first." }
 
-$ver = & $venvPython -c "from leafkit import __version__; print(__version__)"
+$ver = & $venvPython -c "from sekikit import __version__; print(__version__)"
 $ver = $ver.Trim()
-Write-Host "Packaging Leafkit $ver (local only — no upload)"
+Write-Host "Packaging Sekikit $ver (local only — no upload)"
 
 & (Join-Path $Root "scripts\build_exe.ps1")
 
 $relRoot = Join-Path $Root "release"
-$dest = Join-Path $relRoot "Leafkit-$ver"
+$dest = Join-Path $relRoot "Sekikit-$ver"
 if (Test-Path $dest) { Remove-Item $dest -Recurse -Force }
 New-Item -ItemType Directory -Path $dest | Out-Null
 
 # Prefer onedir tree
-$onedir = Join-Path $Root "dist\Leafkit"
+$onedir = Join-Path $Root "dist\Sekikit"
 if (Test-Path $onedir) {
-    Copy-Item $onedir (Join-Path $dest "Leafkit") -Recurse
+    Copy-Item $onedir (Join-Path $dest "Sekikit") -Recurse
 } else {
-    Copy-Item (Join-Path $Root "dist\Leafkit.exe") $dest
+    Copy-Item (Join-Path $Root "dist\Sekikit.exe") $dest
 }
 
 Copy-Item (Join-Path $Root "README.md") $dest
@@ -44,7 +44,7 @@ Get-ChildItem $dest -Recurse -File | Where-Object { $_.Name -ne "SHA256SUMS.txt"
 }
 $lines | Set-Content $sums -Encoding utf8
 
-$zip = Join-Path $relRoot "Leafkit-$ver-windows-x64.zip"
+$zip = Join-Path $relRoot "Sekikit-$ver-windows-x64.zip"
 if (Test-Path $zip) { Remove-Item $zip -Force }
 Compress-Archive -Path (Join-Path $dest "*") -DestinationPath $zip
 

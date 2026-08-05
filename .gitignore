@@ -37,3 +37,9 @@ release/
 justpages_jobs.log
 # Local installer copies (binaries ship via GitHub Releases only)
 dist/installer/
+
+# local runtime
+sekikit_jobs.log
+*_jobs.log
+*_crash.log
+

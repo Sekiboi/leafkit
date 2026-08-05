@@ -1,4 +1,4 @@
-# Build Leafkit Windows binaries with the pages+leaf icon.
+# Build Sekikit Windows binaries with the pages+leaf icon.
 $ErrorActionPreference = "Stop"
 $Root = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 Set-Location $Root
@@ -12,7 +12,7 @@ if (-not (Test-Path $venvPython)) {
 # Ensure icon assets exist
 & $venvPython (Join-Path $Root "scripts\make_icon.py")
 
-$icon = Join-Path $Root "assets\leafkit.ico"
+$icon = Join-Path $Root "assets\sekikit.ico"
 if (-not (Test-Path $icon)) {
     throw "Icon not found: $icon"
 }
@@ -23,46 +23,46 @@ $pyiArgs = @(
     "--icon", $icon,
     "--collect-all", "customtkinter",
     "--collect-all", "tkinterdnd2",
-    "--add-data", "assets\leafkit.ico;assets",
-    "--add-data", "assets\leafkit.png;assets",
+    "--add-data", "assets\sekikit.ico;assets",
+    "--add-data", "assets\sekikit.png;assets",
     "--add-data", "locales;locales",
     "--hidden-import=pypdf",
     "--hidden-import=tkinterdnd2",
     "--hidden-import=fitz",
-    "--hidden-import=leafkit",
-    "--hidden-import=leafkit.app",
-    "--hidden-import=leafkit.pdf_ops",
-    "--hidden-import=leafkit.render",
-    "--hidden-import=leafkit.cli",
-    "--hidden-import=leafkit.jobs",
-    "--hidden-import=leafkit.i18n",
-    "--hidden-import=leafkit.batch",
-    "--hidden-import=leafkit.prefs",
-    "--hidden-import=leafkit.review_ui",
-    "--hidden-import=leafkit.crop_ui",
-    "--hidden-import=leafkit.diagnostics",
-    "--hidden-import=leafkit.ui_organize",
-    "--hidden-import=leafkit.ui_share",
-    "--hidden-import=leafkit.pdf_ops._core",
-    "--hidden-import=leafkit.pdf_ops.structure",
-    "--hidden-import=leafkit.pdf_ops.compress",
-    "--hidden-import=leafkit.pdf_ops.transform",
-    "--hidden-import=leafkit.pdf_ops.pagenum",
-    "--hidden-import=leafkit.pdf_ops.watch",
+    "--hidden-import=sekikit",
+    "--hidden-import=sekikit.app",
+    "--hidden-import=sekikit.pdf_ops",
+    "--hidden-import=sekikit.render",
+    "--hidden-import=sekikit.cli",
+    "--hidden-import=sekikit.jobs",
+    "--hidden-import=sekikit.i18n",
+    "--hidden-import=sekikit.batch",
+    "--hidden-import=sekikit.prefs",
+    "--hidden-import=sekikit.review_ui",
+    "--hidden-import=sekikit.crop_ui",
+    "--hidden-import=sekikit.diagnostics",
+    "--hidden-import=sekikit.ui_organize",
+    "--hidden-import=sekikit.ui_share",
+    "--hidden-import=sekikit.pdf_ops._core",
+    "--hidden-import=sekikit.pdf_ops.structure",
+    "--hidden-import=sekikit.pdf_ops.compress",
+    "--hidden-import=sekikit.pdf_ops.transform",
+    "--hidden-import=sekikit.pdf_ops.pagenum",
+    "--hidden-import=sekikit.pdf_ops.watch",
     "run.py"
 )
 
 Write-Host "Building onedir (preferred)..."
-& $venvPython -m PyInstaller @pyiArgs --name Leafkit --onedir
+& $venvPython -m PyInstaller @pyiArgs --name Sekikit --onedir
 
 Write-Host "Building onefile..."
-& $venvPython -m PyInstaller @pyiArgs --name Leafkit --onefile
+& $venvPython -m PyInstaller @pyiArgs --name Sekikit --onefile
 
-$ver = & $venvPython -c "from leafkit import __version__; print(__version__)"
+$ver = & $venvPython -c "from sekikit import __version__; print(__version__)"
 Write-Host ""
 Write-Host "Done (source version $ver):"
-Write-Host "  $Root\dist\Leafkit\Leafkit.exe   (onedir - preferred)"
-Write-Host "  $Root\dist\Leafkit.exe             (onefile)"
+Write-Host "  $Root\dist\Sekikit\Sekikit.exe   (onedir - preferred)"
+Write-Host "  $Root\dist\Sekikit.exe             (onefile)"
 Write-Host ""
 Write-Host "Re-run this script after every version bump so dist/ matches source."
 Write-Host "Install Desktop/Start Menu shortcuts:"

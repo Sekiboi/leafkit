@@ -1,4 +1,4 @@
-"""Organize tab: multi-PDF page tray (mixin for LeafkitApp)."""
+"""Organize tab: multi-PDF page tray (mixin for SekikitApp)."""
 
 from __future__ import annotations
 
@@ -8,11 +8,11 @@ from tkinter import messagebox
 
 import customtkinter as ctk
 
-from leafkit import __app_name__
-from leafkit import jobs
-from leafkit import pdf_ops
-from leafkit import render as pdf_render
-from leafkit.i18n import _
+from sekikit import __app_name__
+from sekikit import jobs
+from sekikit import pdf_ops
+from sekikit import render as pdf_render
+from sekikit.i18n import _
 
 
 class OrganizeTabMixin:
@@ -744,7 +744,7 @@ class OrganizeTabMixin:
             )
             self._fs_label.configure(image=self._fs_image, text="")
             title = f"{path.name}  ·  p{page_index + 1}  ·  tray {self._fs_pos + 1}/{total}"
-            top.title(f"Leafkit — {self._fs_pos + 1} of {total}")
+            top.title(f"Sekikit — {self._fs_pos + 1} of {total}")
             if hasattr(self, "_fs_title"):
                 self._fs_title.configure(text=title)
             if hasattr(self, "_fs_page_label"):
@@ -840,7 +840,7 @@ class OrganizeTabMixin:
             pass
 
         dest_dir = ref.parent if ref is not None else Path.cwd()
-        blank_out = dest_dir / f".leafkit-blank-{ref.stem if ref else 'page'}.pdf"
+        blank_out = dest_dir / f".sekikit-blank-{ref.stem if ref else 'page'}.pdf"
         try:
             blank_path = pdf_ops.create_blank_pdf(blank_out, width=w, height=h, count=1)
         except pdf_ops.PdfOpsError as exc:

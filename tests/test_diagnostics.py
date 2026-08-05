@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from leafkit import __version__
-from leafkit import diagnostics
+from sekikit import __version__
+from sekikit import diagnostics
 
 
 def test_anonymize_text_redacts_paths_and_pii() -> None:
@@ -31,22 +31,22 @@ def test_anonymize_text_redacts_paths_and_pii() -> None:
 
 
 def test_build_diagnostics_report_safe(tmp_path: Path, monkeypatch) -> None:
-    log = tmp_path / "leafkit_jobs.log"
+    log = tmp_path / "sekikit_jobs.log"
     log.write_text(
         '{"op":"merge","ok":true,"inputs":["secret.pdf"],"outputs":["out.pdf"]}\n'
         r'{"op":"fail","ok":false,"error":"C:\\Users\\Alice\\bad.pdf"}\n',
         encoding="utf-8",
     )
-    crash = tmp_path / "leafkit_crash.log"
+    crash = tmp_path / "sekikit_crash.log"
     crash.write_text(
         "Traceback:\n"
-        r'  File "C:\Users\Alice\repos\leafkit\app.py", line 1\n'
+        r'  File "C:\Users\Alice\repos\sekikit\app.py", line 1\n'
         "Exception: boom\n",
         encoding="utf-8",
     )
 
-    monkeypatch.setattr("leafkit.jobs.job_log_path", lambda: log)
-    monkeypatch.setattr("leafkit.diagnostics.crash_log_path", lambda: crash)
+    monkeypatch.setattr("sekikit.jobs.job_log_path", lambda: log)
+    monkeypatch.setattr("sekikit.diagnostics.crash_log_path", lambda: crash)
 
     text = diagnostics.build_diagnostics_report(extra_notes="hello")
     assert __version__ in text
@@ -54,7 +54,7 @@ def test_build_diagnostics_report_safe(tmp_path: Path, monkeypatch) -> None:
     assert "secret.pdf" in text  # basename from job log is ok
     assert "Traceback" in text
     assert "anonymous" in text.lower()
-    assert "Leafkit diagnostics (anonymous)" in text
+    assert "Sekikit diagnostics (anonymous)" in text
     # No username / full home path leaked from crash or job error
     assert "Alice" not in text
     assert r"C:\Users\Alice" not in text
@@ -67,10 +67,10 @@ def test_build_diagnostics_report_safe(tmp_path: Path, monkeypatch) -> None:
 
 def test_build_diagnostics_report_anonymizes_notes(tmp_path: Path, monkeypatch) -> None:
     monkeypatch.setattr(
-        "leafkit.jobs.job_log_path", lambda: tmp_path / "missing_jobs.log"
+        "sekikit.jobs.job_log_path", lambda: tmp_path / "missing_jobs.log"
     )
     monkeypatch.setattr(
-        "leafkit.diagnostics.crash_log_path",
+        "sekikit.diagnostics.crash_log_path",
         lambda: tmp_path / "missing_crash.log",
     )
     text = diagnostics.build_diagnostics_report(
@@ -82,9 +82,9 @@ def test_build_diagnostics_report_anonymizes_notes(tmp_path: Path, monkeypatch) 
 
 
 def test_save_diagnostics_report(tmp_path: Path, monkeypatch) -> None:
-    monkeypatch.setattr("leafkit.diagnostics.app_data_dir", lambda: tmp_path)
+    monkeypatch.setattr("sekikit.diagnostics.app_data_dir", lambda: tmp_path)
     path = diagnostics.save_diagnostics_report()
     assert path.is_file()
     assert path.parent == tmp_path
     body = path.read_text(encoding="utf-8")
-    assert "Leafkit diagnostics (anonymous)" in body
+    assert "Sekikit diagnostics (anonymous)" in body

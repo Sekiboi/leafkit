@@ -1,4 +1,4 @@
-"""Leafkit GUI — offline PDF page toolkit. Free forever."""
+"""Sekikit GUI — offline PDF page toolkit. Free forever."""
 
 from __future__ import annotations
 
@@ -11,16 +11,16 @@ from tkinter import filedialog, messagebox
 
 import customtkinter as ctk
 
-from leafkit import __app_name__, __version__
-from leafkit import jobs
-from leafkit import pdf_ops
-from leafkit import prefs as app_prefs
-from leafkit import render as pdf_render
-from leafkit import review_ui
-from leafkit import tooltips
-from leafkit.i18n import _, init_i18n
-from leafkit.ui_organize import OrganizeTabMixin
-from leafkit.ui_share import ShareTabMixin
+from sekikit import __app_name__, __version__
+from sekikit import jobs
+from sekikit import pdf_ops
+from sekikit import prefs as app_prefs
+from sekikit import render as pdf_render
+from sekikit import review_ui
+from sekikit import tooltips
+from sekikit.i18n import _, init_i18n
+from sekikit.ui_organize import OrganizeTabMixin
+from sekikit.ui_share import ShareTabMixin
 
 try:
     from tkinterdnd2 import DND_FILES, TkinterDnD
@@ -39,9 +39,9 @@ WINDOW_W = 1000
 WINDOW_H = 800
 WINDOW_SIZE = f"{WINDOW_W}x{WINDOW_H}"
 MIN_SIZE = (WINDOW_W, WINDOW_H)
-APP_USER_MODEL_ID = "Sekiboi.Leafkit"
+APP_USER_MODEL_ID = "Sekiboi.Sekikit"
 
-from leafkit.ui_constants import (
+from sekikit.ui_constants import (
     MUTED as _MUTED,
     PAGENUM_PRESETS as _PAGENUM_PRESETS,
     ROW_BG as _ROW_BG,
@@ -143,7 +143,7 @@ else:
         pass
 
 
-class LeafkitApp(OrganizeTabMixin, ShareTabMixin, _CTkBase):
+class SekikitApp(OrganizeTabMixin, ShareTabMixin, _CTkBase):
     def __init__(self) -> None:
         _set_windows_app_id()
         super().__init__()
@@ -240,8 +240,8 @@ class LeafkitApp(OrganizeTabMixin, ShareTabMixin, _CTkBase):
                 pass
 
     def _apply_app_icon(self) -> None:
-        ico = _resource_path("assets/leafkit.ico")
-        png = _resource_path("assets/leafkit.png")
+        ico = _resource_path("assets/sekikit.ico")
+        png = _resource_path("assets/sekikit.png")
         try:
             if ico.is_file():
                 self.iconbitmap(default=str(ico))
@@ -296,7 +296,7 @@ class LeafkitApp(OrganizeTabMixin, ShareTabMixin, _CTkBase):
         header.grid_columnconfigure(1, weight=1)
 
         logo_col = 0
-        png = _resource_path("assets/leafkit.png")
+        png = _resource_path("assets/sekikit.png")
         if png.is_file():
             try:
                 from PIL import Image
@@ -318,7 +318,7 @@ class LeafkitApp(OrganizeTabMixin, ShareTabMixin, _CTkBase):
 
         ctk.CTkLabel(
             title_block,
-            text=_("Leafkit"),
+            text=_("Sekikit"),
             font=ctk.CTkFont(size=22, weight="bold"),
         ).grid(row=0, column=0, sticky="w")
         ctk.CTkLabel(
@@ -514,7 +514,7 @@ class LeafkitApp(OrganizeTabMixin, ShareTabMixin, _CTkBase):
         foot_row.grid(row=1, column=0, sticky="ew", pady=(4, 0))
         ctk.CTkLabel(
             foot_row,
-            text=_("MIT · free forever · offline only · github.com/Sekiboi/leafkit"),
+            text=_("MIT · free forever · offline only · github.com/Sekiboi/sekikit"),
             font=ctk.CTkFont(size=11),
             text_color=("gray50", "gray60"),
         ).pack(side="left")
@@ -1660,7 +1660,7 @@ class LeafkitApp(OrganizeTabMixin, ShareTabMixin, _CTkBase):
         for final in finals:
             if not final.is_file():
                 continue
-            stage = final.parent / f".leafkit-review-{uuid.uuid4().hex}.tmp.pdf"
+            stage = final.parent / f".sekikit-review-{uuid.uuid4().hex}.tmp.pdf"
             try:
                 os.replace(str(final), str(stage))
             except OSError:
@@ -1685,7 +1685,7 @@ class LeafkitApp(OrganizeTabMixin, ShareTabMixin, _CTkBase):
                 continue
             dest = final
             try:
-                from leafkit.pdf_ops import _unique_path
+                from sekikit.pdf_ops import _unique_path
 
                 if dest.exists():
                     dest = _unique_path(final)
@@ -2598,7 +2598,7 @@ class LeafkitApp(OrganizeTabMixin, ShareTabMixin, _CTkBase):
         if app_prefs.get_first_run_completed():
             return
         win = ctk.CTkToplevel(self)
-        win.title(_("Welcome to Leafkit"))
+        win.title(_("Welcome to Sekikit"))
         win.geometry("500x400")
         win.minsize(460, 380)
         try:
@@ -2619,7 +2619,7 @@ class LeafkitApp(OrganizeTabMixin, ShareTabMixin, _CTkBase):
         ctk.CTkLabel(
             card,
             text=_(
-                "Leafkit works fully offline. Nothing is uploaded.\n\n"
+                "Sekikit works fully offline. Nothing is uploaded.\n\n"
                 "Optional: enable Diagnostics so you can export a local "
                 "bug-report pack (version, OS, recent op names — never PDF "
                 "content or passwords).\n\n"
@@ -2802,7 +2802,7 @@ class LeafkitApp(OrganizeTabMixin, ShareTabMixin, _CTkBase):
         )
 
     def _show_about(self) -> None:
-        from leafkit import diagnostics
+        from sekikit import diagnostics
 
         mode = app_prefs.get_review_mode()
         win = ctk.CTkToplevel(self)
@@ -2866,7 +2866,7 @@ class LeafkitApp(OrganizeTabMixin, ShareTabMixin, _CTkBase):
                 f"Review: {mode}  ·  Settings to change\n"
                 f"Prefs: {app_prefs.prefs_path().name}\n"
                 f"Job log: {jobs.job_log_path().name}\n"
-                "github.com/Sekiboi/leafkit"
+                "github.com/Sekiboi/sekikit"
             ),
             justify="left",
             font=ctk.CTkFont(size=11),
@@ -2966,19 +2966,19 @@ class LeafkitApp(OrganizeTabMixin, ShareTabMixin, _CTkBase):
 
 def _crash_log_path() -> Path:
     try:
-        from leafkit.diagnostics import crash_log_path
+        from sekikit.diagnostics import crash_log_path
 
         return crash_log_path()
     except Exception:  # noqa: BLE001
         if getattr(sys, "frozen", False):
-            return Path(sys.executable).resolve().parent / "leafkit_crash.log"
-        return Path(__file__).resolve().parent.parent / "leafkit_crash.log"
+            return Path(sys.executable).resolve().parent / "sekikit_crash.log"
+        return Path(__file__).resolve().parent.parent / "sekikit_crash.log"
 
 
 def main() -> None:
     try:
         init_i18n()
-        app = LeafkitApp()
+        app = SekikitApp()
         app.mainloop()
     except Exception as exc:  # noqa: BLE001
         log_path = _crash_log_path()
@@ -2987,7 +2987,7 @@ def main() -> None:
             log_path.parent.mkdir(parents=True, exist_ok=True)
             log_path.write_text(text, encoding="utf-8")
         except OSError:
-            log_path = Path.cwd() / "leafkit_crash.log"
+            log_path = Path.cwd() / "sekikit_crash.log"
             log_path.write_text(text, encoding="utf-8")
         try:
             import tkinter as tk
@@ -2997,7 +2997,7 @@ def main() -> None:
             root.withdraw()
             mb.showerror(
                 __app_name__,
-                f"Leafkit failed to start:\n\n{exc}\n\nLog:\n{log_path}",
+                f"Sekikit failed to start:\n\n{exc}\n\nLog:\n{log_path}",
             )
             root.destroy()
         except Exception:

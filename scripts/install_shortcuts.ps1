@@ -1,4 +1,4 @@
-# Create Desktop + Start Menu shortcuts for Leafkit with the app icon.
+# Create Desktop + Start Menu shortcuts for Sekikit with the app icon.
 #
 # Default: pythonw + run.py when .venv exists (always matches current source version).
 # Packaged exe: pass -UsePackagedExe after building with scripts\build_exe.ps1
@@ -11,14 +11,14 @@ $ErrorActionPreference = "Stop"
 $Root = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 Set-Location $Root
 
-$Icon = Join-Path $Root "assets\leafkit.ico"
+$Icon = Join-Path $Root "assets\sekikit.ico"
 if (-not (Test-Path $Icon)) {
     Write-Host "Icon missing - generating..."
     & (Join-Path $Root ".venv\Scripts\python.exe") (Join-Path $Root "scripts\make_icon.py")
 }
 
-$OneFile = Join-Path $Root "dist\Leafkit.exe"
-$OneDir = Join-Path $Root "dist\Leafkit\Leafkit.exe"
+$OneFile = Join-Path $Root "dist\Sekikit.exe"
+$OneDir = Join-Path $Root "dist\Sekikit\Sekikit.exe"
 $Pythonw = Join-Path $Root ".venv\Scripts\pythonw.exe"
 $RunPy = Join-Path $Root "run.py"
 
@@ -29,7 +29,7 @@ $ModeLabel = ""
 
 $ver = "unknown"
 try {
-    $ver = & (Join-Path $Root ".venv\Scripts\python.exe") -c "from leafkit import __version__; print(__version__)"
+    $ver = & (Join-Path $Root ".venv\Scripts\python.exe") -c "from sekikit import __version__; print(__version__)"
 } catch {}
 
 if ($UsePackagedExe -and (Test-Path $OneDir)) {
@@ -64,7 +64,7 @@ else {
 Write-Host "Shortcut target: $ModeLabel"
 Write-Host "  $Target $Arguments"
 
-function New-LeafkitShortcut {
+function New-SekikitShortcut {
     param(
         [string]$LinkPath,
         [string]$TargetPath,
@@ -78,7 +78,7 @@ function New-LeafkitShortcut {
     $sc.Arguments = $Args
     $sc.WorkingDirectory = $WorkingDirectory
     $sc.WindowStyle = 1
-    $sc.Description = "Leafkit - offline PDF page toolkit (v$ver)"
+    $sc.Description = "Sekikit - offline PDF page toolkit (v$ver)"
     $sc.IconLocation = "$IconLocation,0"
     $sc.Save()
     Write-Host "Created $LinkPath"
@@ -88,19 +88,19 @@ $Desktop = [Environment]::GetFolderPath("Desktop")
 $StartMenu = Join-Path ([Environment]::GetFolderPath("StartMenu")) "Programs"
 New-Item -ItemType Directory -Force -Path $StartMenu | Out-Null
 
-New-LeafkitShortcut -LinkPath (Join-Path $Desktop "Leafkit.lnk") `
+New-SekikitShortcut -LinkPath (Join-Path $Desktop "Sekikit.lnk") `
     -TargetPath $Target -Args $Arguments `
     -WorkingDirectory $WorkDir -IconLocation $Icon
 
-New-LeafkitShortcut -LinkPath (Join-Path $StartMenu "Leafkit.lnk") `
+New-SekikitShortcut -LinkPath (Join-Path $StartMenu "Sekikit.lnk") `
     -TargetPath $Target -Args $Arguments `
     -WorkingDirectory $WorkDir -IconLocation $Icon
 
-New-LeafkitShortcut -LinkPath (Join-Path $Root "Leafkit.lnk") `
+New-SekikitShortcut -LinkPath (Join-Path $Root "Sekikit.lnk") `
     -TargetPath $Target -Args $Arguments `
     -WorkingDirectory $WorkDir -IconLocation $Icon
 
 Write-Host ""
-Write-Host "Done. Desktop/Start Menu Leafkit -> $ModeLabel"
+Write-Host "Done. Desktop/Start Menu Sekikit -> $ModeLabel"
 Write-Host "Source version now: $ver"
 Write-Host "For packaged exe shortcuts after build: .\scripts\install_shortcuts.ps1 -UsePackagedExe"

@@ -2,7 +2,7 @@
 import re
 from pathlib import Path
 
-text = Path("leafkit/app.py").read_text(encoding="utf-8")
+text = Path("sekikit/app.py").read_text(encoding="utf-8")
 found = set(re.findall(r'text="([^"]{2,100})"', text))
 found |= set(re.findall(r"text='([^']{2,100})'", text))
 for s in sorted(found):

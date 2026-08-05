@@ -1,16 +1,16 @@
 # Windows installer & install-and-play
 
-Leafkit is designed as a normal desktop app: **install once, launch from Start Menu**, offline forever.
+Sekikit is designed as a normal desktop app: **install once, launch from Start Menu**, offline forever.
 
 ## User expectations we target
 
 | Expectation | How we meet it |
 |-------------|----------------|
-| Double-click installer | `Leafkit-<ver>-Setup.exe` (Inno Setup) |
+| Double-click installer | `Sekikit-<ver>-Setup.exe` (Inno Setup) |
 | Start Menu entry | Created by installer |
 | Optional desktop icon | Task (default **off** — less clutter) |
 | Uninstall cleanly | Windows **Apps & features** / Add or remove programs |
-| App does not write under Program Files | Prefs/logs/crash/diagnostics → `%LOCALAPPDATA%\Leafkit` |
+| App does not write under Program Files | Prefs/logs/crash/diagnostics → `%LOCALAPPDATA%\Sekikit` |
 | Works without admin when possible | `PrivilegesRequired=lowest` + dialog to elevate for Program Files |
 | Silent IT install | `Setup.exe /VERYSILENT /SUPPRESSMSGBOXES /NORESTART` |
 | No network at install | Offline Setup; no download of deps |
@@ -29,8 +29,8 @@ Leafkit is designed as a normal desktop app: **install once, launch from Start M
 
 Produces:
 
-- `dist\Leafkit\` — onedir app (also used standalone)
-- `dist\installer\Leafkit-<version>-Setup.exe` — **install-and-play**
+- `dist\Sekikit\` — onedir app (also used standalone)
+- `dist\installer\Sekikit-<version>-Setup.exe` — **install-and-play**
 - `dist\installer\SHA256SUMS.txt`
 
 If Inno is missing, `build_installer.ps1` exits with guidance; zip portable via `package_local_release.ps1` still works.
@@ -39,10 +39,10 @@ If Inno is missing, `build_installer.ps1` exits with guidance; zip portable via 
 
 | Kind | Path |
 |------|------|
-| Program files (typical) | `C:\Program Files\Leafkit\` |
+| Program files (typical) | `C:\Program Files\Sekikit\` |
 | Per-user override | User-chosen / non-elevated mode under local Programs |
-| **User data** (always) | `%LOCALAPPDATA%\Leafkit\` |
-| | `leafkit_prefs.json`, `leafkit_jobs.log`, `leafkit_crash.log`, diagnostics exports |
+| **User data** (always) | `%LOCALAPPDATA%\Sekikit\` |
+| | `sekikit_prefs.json`, `sekikit_jobs.log`, `sekikit_crash.log`, diagnostics exports |
 
 Uninstall **does not** delete user data (prefs/logs) so reinstall keeps settings. Users can delete the folder manually.
 
@@ -50,7 +50,7 @@ Uninstall **does not** delete user data (prefs/logs) so reinstall keeps settings
 
 Aligned with privacy-first desktop norms:
 
-| Practice | Leafkit |
+| Practice | Sekikit |
 |----------|-----------|
 | No automatic upload | Yes |
 | Opt-in | First launch asks once; checkbox **defaults unchecked** |
@@ -63,15 +63,15 @@ See [REPORTING.md](REPORTING.md) and [PRIVACY.md](PRIVACY.md).
 
 ## Portable alternative
 
-No install: run `dist\Leafkit\Leafkit.exe` or the zip from `package_local_release.ps1`.  
-Data still uses project folder when not frozen; frozen portable in Program Files-like folders still uses `%LOCALAPPDATA%\Leafkit`.
+No install: run `dist\Sekikit\Sekikit.exe` or the zip from `package_local_release.ps1`.  
+Data still uses project folder when not frozen; frozen portable in Program Files-like folders still uses `%LOCALAPPDATA%\Sekikit`.
 
 ## Signing (later)
 
 When you have a code-signing certificate:
 
-1. Sign `dist\Leafkit\Leafkit.exe` (and binaries if required).  
-2. Sign `Leafkit-*-Setup.exe`.  
+1. Sign `dist\Sekikit\Sekikit.exe` (and binaries if required).  
+2. Sign `Sekikit-*-Setup.exe`.  
 3. Publish checksums with the release.
 
 Unsigned freeware often triggers SmartScreen until reputation builds — expected; not a code bug.

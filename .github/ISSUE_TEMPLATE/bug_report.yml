@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for helping improve Leafkit. **Do not upload confidential PDFs** unless you deliberately choose to.
+        Thanks for helping improve Sekikit. **Do not upload confidential PDFs** unless you deliberately choose to.
 
         In the app: **About → Copy diagnostics** (or Save diagnostics) and paste below.
 
@@ -34,8 +34,8 @@ body:
   - type: input
     id: version
     attributes:
-      label: Leafkit version
-      description: From About or `leafkit --version`
+      label: Sekikit version
+      description: From About or `sekikit --version`
       placeholder: "0.13.1"
     validations:
       required: true
@@ -56,9 +56,9 @@ body:
   - type: dropdown
     id: how_run
     attributes:
-      label: How did you run Leafkit?
+      label: How did you run Sekikit?
       options:
-        - Packaged .exe (dist/Leafkit)
+        - Packaged .exe (dist/Sekikit)
         - Source / launch.bat / pythonw run.py
         - CLI only
         - Other

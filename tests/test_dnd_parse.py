@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from leafkit.app import _expand_to_pdfs, _parse_drop_paths
+from sekikit.app import _expand_to_pdfs, _parse_drop_paths
 
 
 def test_parse_simple_paths() -> None:

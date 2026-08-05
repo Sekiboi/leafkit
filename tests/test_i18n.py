@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from leafkit.i18n import _, available_languages, init_i18n, language, load_language
+from sekikit.i18n import _, available_languages, init_i18n, language, load_language
 
 
 def test_english_identity() -> None:

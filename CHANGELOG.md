@@ -1,25 +1,32 @@
 # Changelog
 
-All notable changes to Leafkit are documented here.  
+All notable changes to Sekikit are documented here.  
 **Everything remains free forever — no paid features.**
 
-## 0.15.0-beta.1 — First public beta
+## 0.15.0-beta.1 — First public beta (Sekikit)
 
 ### Status
 - **Beta:** feature-complete enough to dogfood; wants real-world feedback
 - Primary download: **Windows Setup.exe** on GitHub Releases
 - Free forever · MIT · offline-only · no accounts
 
+### Changed (rename)
+- Product renamed from **Leafkit** to **Sekikit** (temporary brand; may change later)
+- Python package / CLI: `sekikit` (was `leafkit`)
+- Windows exe / installer: `Sekikit.exe`, `Sekikit-<ver>-Setup.exe`
+- User data: `%LOCALAPPDATA%\Sekikit` (new folder / install id — not an upgrade of Leafkit)
+- GitHub: **github.com/Sekiboi/sekikit**
+
 ### Highlights
 - Full offline PDF toolkit (Organize, Share, Merge, Mix, Extract, Delete, Insert, Split, Rotate, Watch, CLI)
 - Opt-in **anonymous** diagnostics (default off)
-- Installer: Start Menu, uninstall, `%LOCALAPPDATA%\Leafkit` data
+- Installer: Start Menu, uninstall, local app data
 - Min window size locks so chrome is not clipped
 
 ### Known gaps (feedback welcome)
 - Unsigned installer (SmartScreen may warn until reputation builds)
 - Linux/mac packages less polished than Windows Setup
-- GitHub repo: **github.com/Sekiboi/leafkit**
+- Final product name still under consideration
 - Edge-case PDFs / UI polish still in progress
 
 ## 0.14.1 — Min window size (no clipped UI)
@@ -32,15 +39,14 @@ All notable changes to Leafkit are documented here.
 ## 0.14.0 — Rebrand to Leafkit
 
 ### Changed
-- Product renamed from **JustPages** to **Leafkit** (unique brand)
+- Product renamed from **JustPages** to **Leafkit**
 - Python package / CLI: `leafkit` (was `justpages`)
 - Windows exe / installer: `Leafkit.exe`, `Leafkit-<ver>-Setup.exe`
 - User data: `%LOCALAPPDATA%\Leafkit` (prefs/logs); new install id (not an upgrade of JustPages)
-- Assets, diagnostics, job/crash log names, PDF Producer/Creator stamp
 
 ### Notes
 - Old JustPages install (if any) is a separate app — uninstall it from Windows Apps if present
-- GitHub repo may still be renamed separately to `Sekiboi/leafkit`
+- Later renamed again to **Sekikit** (see 0.15.0-beta.1)
 
 ## 0.13.3 — Anonymous diagnostics
 
@@ -56,11 +62,11 @@ All notable changes to Leafkit are documented here.
 ## 0.13.2 — Install-and-play + opt-in diagnostics (defaults off)
 
 ### Added
-- **Windows Setup.exe:** Inno Setup (`installer/Leafkit.iss`) + `scripts/build_installer.ps1`
+- **Windows Setup.exe:** Inno Setup (`installer/Sekikit.iss`) + `scripts/build_installer.ps1`
 - **First-run Welcome:** optional Diagnostics checkbox (**defaults unchecked / Off**)
 - **Settings:** enable/disable diagnostics export anytime
 - **About:** Copy/Save diagnostics **only if enabled**
-- Installed app data: `%LOCALAPPDATA%\Leafkit` (prefs, logs — not Program Files)
+- Installed app data: `%LOCALAPPDATA%\Sekikit` (prefs, logs — not Program Files)
 - Docs: `INSTALLER.md`, updated REPORTING/PRIVACY
 
 ### Notes
@@ -115,7 +121,7 @@ decrypt, batch all listed, resize, reverse, blank, extract text, tray split, vis
 
 ### Added
 - **Share → All listed files** checkbox: run Compress, Clean, Encrypt, Save unlocked, Resize, Reverse, Grayscale on every PDF in the list
-- `leafkit.batch.run_batch_files` helper (progress, cancel between files, per-file errors)
+- `sekikit.batch.run_batch_files` helper (progress, cancel between files, per-file errors)
 - Batch toast shows success count; partial failures listed in a warning dialog
 - Esc cancels remaining files between ops (not mid-compress of one file unless that op supports cancel)
 
@@ -139,7 +145,7 @@ decrypt, batch all listed, resize, reverse, blank, extract text, tray split, vis
 - Password fail in GUI now prompts and caches for the selected file
 
 ### Changed
-- **`leafkit.pdf_ops`** is a package: `_core`, `structure`, `compress`, `transform`, `pagenum`, `watch` (same public API)
+- **`sekikit.pdf_ops`** is a package: `_core`, `structure`, `compress`, `transform`, `pagenum`, `watch` (same public API)
 - Removed unused helpers (`run_job_safe`, `page_count_fast`, `ngettext`)
 - Docs: product scope and free-forever positioning
 
@@ -147,7 +153,7 @@ decrypt, batch all listed, resize, reverse, blank, extract text, tray split, vis
 
 ### Changed
 - **Organize sessions**: prune unused sources; max 12 open PDF handles (LRU)
-- **Review**: stage outputs to `.leafkit-review-*.tmp.pdf`, promote only on Save; Cancel discards draft
+- **Review**: stage outputs to `.sekikit-review-*.tmp.pdf`, promote only on Save; Cancel discards draft
 - **Encrypt / jobs**: `validate_password` so encrypted outputs get correct page counts in the job log; review can open them
 
 ## 0.11.3 — Hardening cleanup (audit items 1–5)
@@ -201,7 +207,7 @@ decrypt, batch all listed, resize, reverse, blank, extract text, tray split, vis
 ## 0.10.6 — Hover tooltips (+ launch fix)
 
 ### Fixed
-- **Wrong version in the window**: `launch.bat` and shortcuts default to **source** (venv) so the title matches `__version__`. Packaged exe only with `LEAFKIT_USE_EXE=1` or `install_shortcuts.ps1 -UsePackagedExe`.
+- **Wrong version in the window**: `launch.bat` and shortcuts default to **source** (venv) so the title matches `__version__`. Packaged exe only with `SEKIKIT_USE_EXE=1` or `install_shortcuts.ps1 -UsePackagedExe`.
 
 ### Added
 - Short hover tooltips on interactive controls (buttons, entries, checkboxes, presets)
@@ -217,7 +223,7 @@ decrypt, batch all listed, resize, reverse, blank, extract text, tray split, vis
 - **Full-screen result review** before keeping an output (Save / Cancel)
 - **Settings**: Review mode **Off · Risk only · Always** (default **Risk only**)
 - Risk ops: delete, renumber, hard crop, grayscale, scan compress, flatten
-- Local prefs file `leafkit_prefs.json` (never uploaded)
+- Local prefs file `sekikit_prefs.json` (never uploaded)
 - Honest copy: screen preview only — not a print proof; Cancel deletes the new file
 
 ### Not promised
@@ -252,7 +258,7 @@ Still no OCR or smart footer detection. Rotate intentionally omitted (order unch
 - Arrow/Delete keys no longer steal input from text fields
 
 ### Note
-If the window title still says **v0.9.1**, you are running an old packaged `dist\Leafkit\Leafkit.exe`. Rebuild with `.\scripts\build_exe.ps1`, or run source: `pythonw run.py` / set `LEAFKIT_USE_SOURCE=1` before `launch.bat`.
+If the window title still says **v0.9.1**, you are running an old packaged `dist\Sekikit\Sekikit.exe`. Rebuild with `.\scripts\build_exe.ps1`, or run source: `pythonw run.py` / set `SEKIKIT_USE_SOURCE=1` before `launch.bat`.
 
 ## 0.10.1 — Delight polish (no new product scope)
 
@@ -282,7 +288,7 @@ Still free forever. No OCR, cloud, or form *design*.
 ## 0.9.1 — Community i18n pattern
 
 ### Added
-- `leafkit.i18n` with `_()` and auto locale / `LEAFKIT_LANG`
+- `sekikit.i18n` with `_()` and auto locale / `SEKIKIT_LANG`
 - `locales/en.json` English catalog; partial locale files for other languages
 - `docs/TRANSLATING.md` — how volunteers add translations
 - Example fragment `locales/_example_fr.json`
@@ -293,7 +299,7 @@ English remains the source language; missing keys fall back to English.
 ## 0.9.0 — Best-practice hardening (no public release required)
 
 ### Added / improved
-- **Producer/Creator** stamped as `Leafkit <version>` on outputs
+- **Producer/Creator** stamped as `Sekikit <version>` on outputs
 - **CLI** fully uses `jobs.run_job` (same log/warnings as GUI)
 - **docs/LIMITS.md** + **docs/PRIVACY.md** (honest limits, no bloat)
 - **package_local_release.ps1** — local zip + SHA256 only (does not publish)
@@ -304,7 +310,7 @@ English remains the source language; missing keys fall back to English.
 
 ### Added
 - **Per-file password cache** (session) + provider for multi-PDF jobs
-- **Local job log** (`leafkit_jobs.log`) — JSON lines, offline only
+- **Local job log** (`sekikit_jobs.log`) — JSON lines, offline only
 - **Unified `jobs.run_job`** wraps ops (warnings + duration + log)
 - **Ghostscript cancel** via Esc (process tree kill on Windows)
 - **Hard crop** option (discards content outside margins; CLI `--hard`)
@@ -337,7 +343,7 @@ English remains the source language; missing keys fall back to English.
 - **N-up** (2 / 4 / 9 pages per sheet) — Share tab + CLI
 - **Grayscale** conversion — Share tab + CLI
 - **Merge options:** preserve bookmarks (best-effort), fit to A4 / Letter / Legal
-- **CLI** (`leafkit …`): info, merge, extract, split, compress, rotate, delete, clean, encrypt, nup, grayscale, gui
+- **CLI** (`sekikit …`): info, merge, extract, split, compress, rotate, delete, clean, encrypt, nup, grayscale, gui
 - **About** dialog (F1) with shortcuts list
 - Keyboard: Ctrl+O add files, Ctrl+L load organize pages, F1 about
 - GitHub Actions CI (pytest on Windows + Ubuntu)

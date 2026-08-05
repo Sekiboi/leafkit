@@ -7,7 +7,7 @@ from typing import Callable
 
 from pypdf import PdfWriter
 
-from leafkit.pdf_ops._core import (
+from sekikit.pdf_ops._core import (
     PasswordProvider,
     PdfOpsError,
     _assert_not_overwrite_inputs,
@@ -54,7 +54,7 @@ def clean_metadata(
         "/Subject": "",
         "/Keywords": "",
         "/Creator": "",
-        "/Producer": "Leafkit",
+        "/Producer": "Sekikit",
     }
     try:
         writer.add_metadata(empty)

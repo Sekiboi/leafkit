@@ -7,7 +7,7 @@ from pathlib import Path
 import pytest
 from pypdf import PdfReader
 
-from leafkit import pdf_ops
+from sekikit import pdf_ops
 from tests.fixtures import make_messy
 
 
@@ -17,7 +17,7 @@ def test_atomic_merge_validates(tmp_path: Path) -> None:
     out = pdf_ops.merge_pdfs([a, b], tmp_path / "m.pdf")
     assert out.exists()
     assert pdf_ops.page_count(out) == 5
-    temps = list(tmp_path.glob(".leafkit-*.tmp.pdf"))
+    temps = list(tmp_path.glob(".sekikit-*.tmp.pdf"))
     assert temps == []
 
 

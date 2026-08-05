@@ -1,4 +1,4 @@
-"""Real-world exercise of every Leafkit operation using Desktop\\PDF Test.
+"""Real-world exercise of every Sekikit operation using Desktop\\PDF Test.
 
 Creates organized result folders and a RESULTS.md report. Offline only.
 """
@@ -16,15 +16,15 @@ from pathlib import Path
 
 from PIL import Image
 
-from leafkit import __version__, pdf_ops
-from leafkit.cli import main as cli_main
+from sekikit import __version__, pdf_ops
+from sekikit.cli import main as cli_main
 
-# Override with LEAFKIT_PDF_TEST if Desktop layout differs on this machine.
+# Override with SEKIKIT_PDF_TEST if Desktop layout differs on this machine.
 SRC = Path(
-    os.environ.get("LEAFKIT_PDF_TEST")
+    os.environ.get("SEKIKIT_PDF_TEST")
     or (Path.home() / "Desktop" / "PDF Test")
 )
-OUT = SRC / f"leafkit_real_test_v{__version__}"
+OUT = SRC / f"sekikit_real_test_v{__version__}"
 
 
 @dataclass
@@ -146,7 +146,7 @@ def main() -> int:
     b = by_name.get("VoterReg.pdf", b)
     c = by_name.get("Zoroastrianism.pdf", c)
 
-    print(f"Leafkit v{__version__}")
+    print(f"Sekikit v{__version__}")
     print(f"Source: {SRC}")
     print(f"Output: {OUT}")
     print(f"Inputs: {[p.name for p in pdfs]}")
@@ -476,7 +476,7 @@ def main() -> int:
     passed = sum(1 for r in RESULTS if r.ok)
     failed = sum(1 for r in RESULTS if not r.ok)
     lines = [
-        f"# Leafkit real-world test report",
+        f"# Sekikit real-world test report",
         f"",
         f"- **Version:** {__version__}",
         f"- **When (UTC):** {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%SZ')}",

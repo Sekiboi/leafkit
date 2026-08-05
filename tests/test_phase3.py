@@ -6,8 +6,8 @@ from pathlib import Path
 
 from pypdf import PdfWriter
 
-from leafkit import pdf_ops
-from leafkit.cli import main as cli_main
+from sekikit import pdf_ops
+from sekikit.cli import main as cli_main
 
 
 def _make_pdf(path: Path, pages: int = 4) -> Path:

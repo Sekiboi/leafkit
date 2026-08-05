@@ -9,9 +9,9 @@ from typing import Any
 import customtkinter as ctk
 from PIL import Image, ImageTk
 
-from leafkit import __app_name__
-from leafkit import render as pdf_render
-from leafkit.i18n import _
+from sekikit import __app_name__
+from sekikit import render as pdf_render
+from sekikit.i18n import _
 
 
 def run_crop_dialog(

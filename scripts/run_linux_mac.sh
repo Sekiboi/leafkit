@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Run Leafkit from source on Linux or macOS (offline, free forever).
+# Run Sekikit from source on Linux or macOS (offline, free forever).
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
@@ -13,7 +13,7 @@ pip install -q -r requirements.txt
 
 if [[ "${1:-}" == "cli" ]]; then
   shift
-  exec python -m leafkit.cli "$@"
+  exec python -m sekikit.cli "$@"
 fi
 
 if [[ "${1:-}" == "test" ]]; then

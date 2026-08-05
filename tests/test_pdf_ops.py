@@ -8,7 +8,7 @@ from pathlib import Path
 import pytest
 from pypdf import PdfReader, PdfWriter
 
-from leafkit import pdf_ops
+from sekikit import pdf_ops
 
 
 def _make_pdf(path: Path, pages: int = 3) -> Path:

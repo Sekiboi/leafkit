@@ -6,7 +6,7 @@ from pathlib import Path
 
 from PIL import Image
 
-from leafkit.pdf_ops import PdfOpsError, _ensure_pdf
+from sekikit.pdf_ops import PdfOpsError, _ensure_pdf
 
 
 class RenderError(PdfOpsError):

@@ -5,8 +5,8 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Callable
 
-from leafkit import jobs
-from leafkit import pdf_ops
+from sekikit import jobs
+from sekikit import pdf_ops
 
 
 def run_batch_files(

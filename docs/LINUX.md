@@ -1,4 +1,4 @@
-# Leafkit on Linux
+# Sekikit on Linux
 
 **Windows is the primary supported install** (Setup.exe).  
 Linux is available for **CLI**, **run-from-source GUI**, and **package scripts**.
@@ -10,8 +10,8 @@ Everything stays **offline**, **MIT**, and **free forever**.
 ## Quick start (from source)
 
 ```bash
-git clone https://github.com/Sekiboi/leafkit.git
-cd leafkit
+git clone https://github.com/Sekiboi/sekikit.git
+cd sekikit
 chmod +x scripts/run_linux_mac.sh
 ./scripts/run_linux_mac.sh          # GUI
 ./scripts/run_linux_mac.sh cli info file.pdf
@@ -25,7 +25,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 python run.py                       # GUI
-python -m leafkit.cli --help        # CLI
+python -m sekikit.cli --help        # CLI
 ```
 
 ### System packages
@@ -53,31 +53,31 @@ Linux outputs under `dist/` / `dist/release/`:
 
 | Artifact | Notes |
 |----------|--------|
-| `Leafkit-linux-<arch>.tar.gz` | onedir + `leafkit-run.sh` |
-| `Leafkit-<arch>.AppImage` | when `appimagetool` is available |
+| `Sekikit-linux-<arch>.tar.gz` | onedir + `sekikit-run.sh` |
+| `Sekikit-<arch>.AppImage` | when `appimagetool` is available |
 
 ### GitHub Actions
 
 Workflow **Package Unix** (`.github/workflows/package-unix.yml`):
 
 - Runs on **tag** `v*` or **workflow_dispatch**
-- Uploads **leafkit-linux** artifacts (among others)
+- Uploads **sekikit-linux** artifacts (among others)
 
 ### Run packaged Linux
 
 ```bash
-tar -xzf Leafkit-linux-x86_64.tar.gz
-cd Leafkit
-./leafkit-run.sh
+tar -xzf Sekikit-linux-x86_64.tar.gz
+cd Sekikit
+./sekikit-run.sh
 # or
-./Leafkit
+./Sekikit
 ```
 
 AppImage (if present):
 
 ```bash
-chmod +x Leafkit-x86_64.AppImage
-./Leafkit-x86_64.AppImage
+chmod +x Sekikit-x86_64.AppImage
+./Sekikit-x86_64.AppImage
 ```
 
 ## What works (expected)

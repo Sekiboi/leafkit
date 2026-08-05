@@ -14,21 +14,21 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from leafkit import __version__
-from leafkit import jobs
-from leafkit import prefs as app_prefs
-from leafkit import render as pdf_render
+from sekikit import __version__
+from sekikit import jobs
+from sekikit import prefs as app_prefs
+from sekikit import render as pdf_render
 
 
 def crash_log_path() -> Path:
     """Crash log lives in user data dir (writable after install)."""
-    from leafkit.prefs import user_data_dir
+    from sekikit.prefs import user_data_dir
 
-    return user_data_dir() / "leafkit_crash.log"
+    return user_data_dir() / "sekikit_crash.log"
 
 
 def app_data_dir() -> Path:
-    from leafkit.prefs import user_data_dir
+    from sekikit.prefs import user_data_dir
 
     return user_data_dir()
 
@@ -165,7 +165,7 @@ def build_diagnostics_report(
     """Build an anonymous plain-text report safe to paste into GitHub Issues."""
     frozen = bool(getattr(sys, "frozen", False))
     try:
-        gs = __import__("leafkit.pdf_ops", fromlist=["find_ghostscript"]).find_ghostscript()
+        gs = __import__("sekikit.pdf_ops", fromlist=["find_ghostscript"]).find_ghostscript()
         gs_s = "found" if gs else "not found"
     except Exception:  # noqa: BLE001
         gs_s = "unknown"
@@ -173,7 +173,7 @@ def build_diagnostics_report(
     notes = anonymize_text(extra_notes.strip()) if extra_notes.strip() else ""
 
     lines = [
-        "### Leafkit diagnostics (anonymous)",
+        "### Sekikit diagnostics (anonymous)",
         "",
         "This report is **anonymous**: no account, name, device ID, hostname,",
         "or full folder paths. Paths in log tails are redacted.",
@@ -237,7 +237,7 @@ def build_diagnostics_report(
         [
             "### How to report",
             "",
-            "1. Open: https://github.com/Sekiboi/leafkit/issues/new/choose",
+            "1. Open: https://github.com/Sekiboi/sekikit/issues/new/choose",
             "2. Pick **Bug report** or **Crash report**.",
             "3. Paste this block and describe steps to reproduce.",
             "4. Do **not** attach confidential PDFs unless you choose to.",
@@ -251,7 +251,7 @@ def save_diagnostics_report(path: Path | None = None) -> Path:
     """Write diagnostics next to the app; return path."""
     if path is None:
         stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-        path = app_data_dir() / f"leafkit_diagnostics_{stamp}.txt"
+        path = app_data_dir() / f"sekikit_diagnostics_{stamp}.txt"
     path = Path(path)
     path.write_text(build_diagnostics_report(), encoding="utf-8")
     return path

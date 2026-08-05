@@ -1,4 +1,4 @@
-"""Regenerate assets/leafkit.png and assets/leafkit.ico.
+"""Regenerate assets/sekikit.png and assets/sekikit.ico.
 
 Minimal glyph: one abstract leaf that also reads as a folded page.
 Same blue/white palette as before.
@@ -75,13 +75,13 @@ def draw_icon(size: int, with_plate: bool = True) -> Image.Image:
 
 def main() -> None:
     ASSETS.mkdir(exist_ok=True)
-    draw_icon(512, True).save(ASSETS / "leafkit.png")
-    draw_icon(512, False).save(ASSETS / "leafkit_mark.png")
+    draw_icon(512, True).save(ASSETS / "sekikit.png")
+    draw_icon(512, False).save(ASSETS / "sekikit_mark.png")
     sizes = [(16, 16), (24, 24), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)]
-    draw_icon(256, True).save(ASSETS / "leafkit.ico", format="ICO", sizes=sizes)
-    print(f"Wrote {ASSETS / 'leafkit.png'}")
-    print(f"Wrote {ASSETS / 'leafkit_mark.png'}")
-    print(f"Wrote {ASSETS / 'leafkit.ico'}")
+    draw_icon(256, True).save(ASSETS / "sekikit.ico", format="ICO", sizes=sizes)
+    print(f"Wrote {ASSETS / 'sekikit.png'}")
+    print(f"Wrote {ASSETS / 'sekikit_mark.png'}")
+    print(f"Wrote {ASSETS / 'sekikit.ico'}")
 
 
 if __name__ == "__main__":

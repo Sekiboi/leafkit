@@ -17,7 +17,7 @@ from typing import Callable
 from pypdf import PdfReader, PdfWriter
 
 try:
-    from leafkit import __version__ as _LK_VERSION
+    from sekikit import __version__ as _LK_VERSION
 except Exception:  # noqa: BLE001
     _LK_VERSION = "dev"
 
@@ -25,11 +25,11 @@ PasswordProvider = Callable[[Path], str | None]
 
 
 def _stamp_writer_metadata(writer: PdfWriter) -> None:
-    """Identify outputs as Leafkit without overwriting user-cleared fields later."""
+    """Identify outputs as Sekikit without overwriting user-cleared fields later."""
     try:
         meta = {
-            "/Producer": f"Leafkit {_LK_VERSION}",
-            "/Creator": f"Leafkit {_LK_VERSION}",
+            "/Producer": f"Sekikit {_LK_VERSION}",
+            "/Creator": f"Sekikit {_LK_VERSION}",
         }
         writer.add_metadata(meta)
     except Exception:  # noqa: BLE001
@@ -39,8 +39,8 @@ def _stamp_writer_metadata(writer: PdfWriter) -> None:
 def _stamp_fitz_metadata(doc) -> None:
     try:
         meta = doc.metadata or {}
-        meta["producer"] = f"Leafkit {_LK_VERSION}"
-        meta["creator"] = f"Leafkit {_LK_VERSION}"
+        meta["producer"] = f"Sekikit {_LK_VERSION}"
+        meta["creator"] = f"Sekikit {_LK_VERSION}"
         doc.set_metadata(meta)
     except Exception:  # noqa: BLE001
         pass
@@ -247,7 +247,7 @@ def _temp_pdf_path(near: Path) -> Path:
     if not parent.is_dir():
         parent = Path(near).parent
     parent.mkdir(parents=True, exist_ok=True)
-    return parent / f".leafkit-{uuid.uuid4().hex}.tmp.pdf"
+    return parent / f".sekikit-{uuid.uuid4().hex}.tmp.pdf"
 
 
 def _ensure_pdf(path: Path) -> Path:

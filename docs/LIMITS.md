@@ -1,4 +1,4 @@
-# Leafkit — limits & honesty
+# Sekikit — limits & honesty
 
 Free forever, offline only. This document states what we **do well** and what we **do not claim**.
 
@@ -8,7 +8,7 @@ Free forever, offline only. This document states what we **do well** and what we
 - No accounts, no upload, no analytics, no required network.
 - Optional tools you install yourself (e.g. Ghostscript) also run **locally**.
 - Session passwords live in memory only; they are not written to disk.
-- `leafkit_jobs.log` is a **local** JSON log of operations (file **basenames** only — not full folder paths — plus duration, success, warnings). It never leaves your PC unless **you** copy it.
+- `sekikit_jobs.log` is a **local** JSON log of operations (file **basenames** only — not full folder paths — plus duration, success, warnings). It never leaves your PC unless **you** copy it.
 
 ## Safe outputs
 
@@ -45,9 +45,9 @@ Free forever, offline only. This document states what we **do well** and what we
 | **Interactive / box crop** | One rectangle for chosen pages (this page or all). Soft = boxes; hard = discard outside. Not per-page different rects; not a print-shop trim tool. |
 | **Stamp image** | One image, one position, optional opacity. Not tiled/diagonal watermark studio. |
 
-## Scope (what Leafkit is)
+## Scope (what Sekikit is)
 
-Leafkit is an **offline page-structure toolkit**: organize, merge, split, compress, clean, encrypt, and related tools. It is **not** a full PDF editor: no OCR, in-PDF text rewrite, document conversion suites, form designer, or certificate-signing product.
+Sekikit is an **offline page-structure toolkit**: organize, merge, split, compress, clean, encrypt, and related tools. It is **not** a full PDF editor: no OCR, in-PDF text rewrite, document conversion suites, form designer, or certificate-signing product.
 
 ## What we will not add (scope)
 
@@ -57,10 +57,10 @@ Leafkit is an **offline page-structure toolkit**: organize, merge, split, compre
 
 ## Reporting issues
 
-Nothing is uploaded automatically. To help improve Leafkit:
+Nothing is uploaded automatically. To help improve Sekikit:
 
 1. **About (F1) → Copy diagnostics** (or Save diagnostics…).  
-2. Open a [GitHub Issue](https://github.com/Sekiboi/leafkit/issues/new/choose) (Bug or Crash template).  
+2. Open a [GitHub Issue](https://github.com/Sekiboi/sekikit/issues/new/choose) (Bug or Crash template).  
 3. Paste the diagnostics and steps to reproduce.
 
 See [REPORTING.md](REPORTING.md). Prefer not to send confidential PDFs.

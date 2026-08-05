@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 from typing import Callable
 
-from leafkit.pdf_ops._core import (
+from sekikit.pdf_ops._core import (
     PasswordProvider,
     PdfOpsError,
     _assert_not_overwrite_inputs,
@@ -20,7 +20,7 @@ from leafkit.pdf_ops._core import (
     _validate_pdf_file,
     _warn,
 )
-from leafkit.pdf_ops.transform import _save_fitz_atomic
+from sekikit.pdf_ops.transform import _save_fitz_atomic
 
 # balanced=structure, email=images+cleanup, max=strong re-encode, scan=rasterize
 COMPRESS_PRESETS = ("email", "balanced", "max", "scan")

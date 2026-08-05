@@ -9,24 +9,24 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-app_path = ROOT / "leafkit" / "app.py"
+app_path = ROOT / "sekikit" / "app.py"
 en = json.loads((ROOT / "locales" / "en.json").read_text(encoding="utf-8"))
 keys = set(en.keys())
 
 text = app_path.read_text(encoding="utf-8")
 
-if "from leafkit.i18n import" not in text:
+if "from sekikit.i18n import" not in text:
     text = text.replace(
-        "from leafkit import render as pdf_render\n",
-        "from leafkit import render as pdf_render\n"
-        "from leafkit.i18n import _, init_i18n\n",
+        "from sekikit import render as pdf_render\n",
+        "from sekikit import render as pdf_render\n"
+        "from sekikit.i18n import _, init_i18n\n",
         1,
     )
 
 if "init_i18n()" not in text:
     text = text.replace(
-        "def main() -> None:\n    try:\n        app = LeafkitApp()\n",
-        "def main() -> None:\n    try:\n        init_i18n()\n        app = LeafkitApp()\n",
+        "def main() -> None:\n    try:\n        app = SekikitApp()\n",
+        "def main() -> None:\n    try:\n        init_i18n()\n        app = SekikitApp()\n",
         1,
     )
 

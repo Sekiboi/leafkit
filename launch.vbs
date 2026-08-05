@@ -1,4 +1,4 @@
-' Optional silent launcher. Prefer Desktop/Start Menu Leafkit.lnk after install_shortcuts.ps1.
+' Optional silent launcher. Prefer Desktop/Start Menu Sekikit.lnk after install_shortcuts.ps1.
 ' Order: packaged onedir exe → onefile exe → pythonw run.py → launch.bat (first-time setup)
 
 Option Explicit
@@ -9,8 +9,8 @@ Set fso = CreateObject("Scripting.FileSystemObject")
 root = fso.GetParentFolderName(WScript.ScriptFullName)
 sh.CurrentDirectory = root
 
-onedir = root & "\dist\Leafkit\Leafkit.exe"
-onefile = root & "\dist\Leafkit.exe"
+onedir = root & "\dist\Sekikit\Sekikit.exe"
+onefile = root & "\dist\Sekikit.exe"
 pythonw = root & "\.venv\Scripts\pythonw.exe"
 runpy = root & "\run.py"
 

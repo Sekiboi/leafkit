@@ -1,4 +1,4 @@
-"""Allow `python -m leafkit` (GUI) or `python -m leafkit.cli`."""
+"""Allow `python -m sekikit` (GUI) or `python -m sekikit.cli`."""
 
 import sys
 
@@ -37,9 +37,9 @@ if __name__ == "__main__":
         "--help",
         "--version",
     ):
-        from leafkit.cli import main as cli_main
+        from sekikit.cli import main as cli_main
 
         raise SystemExit(cli_main())
-    from leafkit.app import main as gui_main
+    from sekikit.app import main as gui_main
 
     gui_main()

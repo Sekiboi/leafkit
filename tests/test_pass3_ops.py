@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from leafkit import pdf_ops
-from leafkit.cli import main
+from sekikit import pdf_ops
+from sekikit.cli import main
 from tests.fixtures import make_messy
 
 
@@ -23,9 +23,9 @@ def _pdf_with_text(path: Path, lines: list[str]) -> Path:
 
 
 def test_extract_text(tmp_path: Path) -> None:
-    src = _pdf_with_text(tmp_path / "t.pdf", ["Hello Leafkit", "Page two"])
+    src = _pdf_with_text(tmp_path / "t.pdf", ["Hello Sekikit", "Page two"])
     text = pdf_ops.extract_text(src)
-    assert "Hello Leafkit" in text
+    assert "Hello Sekikit" in text
     assert "Page two" in text
 
 

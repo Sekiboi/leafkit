@@ -28,19 +28,19 @@ _RISK_OP_MARKERS = (
 def user_data_dir() -> Path:
     """Writable app data folder (installed apps must not write under Program Files)."""
     if getattr(sys, "frozen", False):
-        # Windows: %LOCALAPPDATA%\Leafkit
-        # Other OS: ~/.local/share/Leafkit or ~/Library/Application Support/Leafkit
+        # Windows: %LOCALAPPDATA%\Sekikit
+        # Other OS: ~/.local/share/Sekikit or ~/Library/Application Support/Sekikit
         if sys.platform == "win32":
             root = Path(os.environ.get("LOCALAPPDATA") or Path.home() / "AppData" / "Local")
-            base = root / "Leafkit"
+            base = root / "Sekikit"
         elif sys.platform == "darwin":
-            base = Path.home() / "Library" / "Application Support" / "Leafkit"
+            base = Path.home() / "Library" / "Application Support" / "Sekikit"
         else:
             xdg = os.environ.get("XDG_DATA_HOME")
             base = (
-                Path(xdg) / "Leafkit"
+                Path(xdg) / "Sekikit"
                 if xdg
-                else Path.home() / ".local" / "share" / "Leafkit"
+                else Path.home() / ".local" / "share" / "Sekikit"
             )
     else:
         # Source checkout: keep next to project for easy dev
@@ -53,7 +53,7 @@ def user_data_dir() -> Path:
 
 
 def prefs_path() -> Path:
-    return user_data_dir() / "leafkit_prefs.json"
+    return user_data_dir() / "sekikit_prefs.json"
 
 
 def load_prefs() -> dict[str, Any]:

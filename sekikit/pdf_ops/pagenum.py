@@ -6,7 +6,7 @@ import uuid
 from pathlib import Path
 from typing import Callable
 
-from leafkit.pdf_ops._core import (
+from sekikit.pdf_ops._core import (
     PasswordProvider,
     PdfOpsError,
     _assert_not_overwrite_inputs,
@@ -21,8 +21,8 @@ from leafkit.pdf_ops._core import (
     _warn,
     parse_page_range,
 )
-from leafkit.pdf_ops.structure import default_output_next_to
-from leafkit.pdf_ops.transform import _save_fitz_atomic
+from sekikit.pdf_ops.structure import default_output_next_to
+from sekikit.pdf_ops.transform import _save_fitz_atomic
 
 _PAGE_NUM_POSITIONS = frozenset({"header", "footer"})
 _PAGE_NUM_ALIGNS = frozenset({"left", "center", "right"})
@@ -558,7 +558,7 @@ def op_then_renumber(
         return produce(final)
 
     final.parent.mkdir(parents=True, exist_ok=True)
-    tmp = final.parent / f".leafkit-mid-{uuid.uuid4().hex}.tmp.pdf"
+    tmp = final.parent / f".sekikit-mid-{uuid.uuid4().hex}.tmp.pdf"
     mid: Path | None = None
     try:
         mid = produce(tmp)

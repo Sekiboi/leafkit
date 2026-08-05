@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 found: set[str] = set()
 
-for path in (ROOT / "leafkit").glob("*.py"):
+for path in (ROOT / "sekikit").glob("*.py"):
     text = path.read_text(encoding="utf-8")
     found |= set(re.findall(r'_\(\s*"([^"]+)"\s*\)', text))
     found |= set(re.findall(r"_\(\s*'([^']+)'\s*\)", text))
@@ -35,7 +35,7 @@ extra = [
     "Images → PDF",
     "N-up",
     "Grayscale",
-    "Leafkit",
+    "Sekikit",
 ]
 found |= set(extra)
 

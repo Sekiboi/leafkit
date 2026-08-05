@@ -8,8 +8,8 @@ import pytest
 from pypdf import PdfReader, PdfWriter
 from PIL import Image
 
-from leafkit import pdf_ops
-from leafkit import render as pdf_render
+from sekikit import pdf_ops
+from sekikit import render as pdf_render
 
 
 def _make_pdf(path: Path, pages: int = 3) -> Path:

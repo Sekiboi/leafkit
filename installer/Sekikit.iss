@@ -1,4 +1,4 @@
-; Leafkit Windows installer (Inno Setup 6+)
+; Sekikit Windows installer (Inno Setup 6+)
 ; Best practices for small offline freeware:
 ;   - Single Setup.exe, clear wizard, uninstall registration
 ;   - App under {autopf} or per-user Programs; data under %LOCALAPPDATA%
@@ -9,7 +9,7 @@
 ;
 ; Build: scripts\build_installer.ps1  (runs PyInstaller first)
 
-#define MyAppName "Leafkit"
+#define MyAppName "Sekikit"
 #ifndef MyAppVersion
   #define MyAppVersion "0.15.0-beta.1"
 #endif
@@ -18,10 +18,10 @@
   #define MyAppVersionInfo "0.15.0.1"
 #endif
 #define MyAppPublisher "Sekiboi"
-#define MyAppURL "https://github.com/Sekiboi/leafkit"
-#define MyAppExeName "Leafkit.exe"
-; Product id for Leafkit (separate from any prior JustPages install)
-#define MyAppId "{{B7E4D3F2-8C5E-4F0B-A2D6-3E6F7B9C1D4E}"
+#define MyAppURL "https://github.com/Sekiboi/sekikit"
+#define MyAppExeName "Sekikit.exe"
+; Product id for Sekikit (separate from any prior JustPages install)
+#define MyAppId "{{A1C8E2F4-9D6B-4A3C-B7E1-5F8D2C0A9E6B}"
 
 [Setup]
 AppId={#MyAppId}
@@ -38,8 +38,8 @@ DisableProgramGroupPage=yes
 LicenseFile=..\LICENSE
 InfoBeforeFile=..\installer\WELCOME.txt
 OutputDir=..\dist\installer
-OutputBaseFilename=Leafkit-{#MyAppVersion}-Setup
-SetupIconFile=..\assets\leafkit.ico
+OutputBaseFilename=Sekikit-{#MyAppVersion}-Setup
+SetupIconFile=..\assets\sekikit.ico
 UninstallDisplayIcon={app}\{#MyAppExeName}
 Compression=lzma2/max
 SolidCompression=yes
@@ -68,8 +68,8 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-; Entire onedir PyInstaller tree (must exist: dist\Leafkit\*)
-Source: "..\dist\Leafkit\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+; Entire onedir PyInstaller tree (must exist: dist\Sekikit\*)
+Source: "..\dist\Sekikit\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Comment: "Offline PDF page toolkit — free forever"
@@ -80,16 +80,16 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#MyAppName}}"; Flags: nowait postinstall skipifsilent
 
 [UninstallDelete]
-; Leave user data (%LOCALAPPDATA%\Leafkit) so prefs/logs survive reinstall.
-; Optional: Type: filesandordirs; Name: "{localappdata}\Leafkit"
+; Leave user data (%LOCALAPPDATA%\Sekikit) so prefs/logs survive reinstall.
+; Optional: Type: filesandordirs; Name: "{localappdata}\Sekikit"
 
 [Code]
 function InitializeSetup(): Boolean;
 begin
   Result := True;
-  if not DirExists(ExpandConstant('{#SourcePath}\..\dist\Leafkit')) then
+  if not DirExists(ExpandConstant('{#SourcePath}\..\dist\Sekikit')) then
   begin
-    MsgBox('Build dist\Leafkit first (scripts\build_exe.ps1), then re-run the installer build.',
+    MsgBox('Build dist\Sekikit first (scripts\build_exe.ps1), then re-run the installer build.',
       mbError, MB_OK);
     Result := False;
   end;

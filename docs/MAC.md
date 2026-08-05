@@ -1,4 +1,4 @@
-# Leafkit on macOS
+# Sekikit on macOS
 
 **Windows is the primary supported install** (Setup.exe).  
 macOS is available for **CLI**, **run-from-source GUI**, and **package scripts**.
@@ -10,8 +10,8 @@ Everything stays **offline**, **MIT**, and **free forever**.
 ## Quick start (from source)
 
 ```bash
-git clone https://github.com/Sekiboi/leafkit.git
-cd leafkit
+git clone https://github.com/Sekiboi/sekikit.git
+cd sekikit
 chmod +x scripts/run_linux_mac.sh
 ./scripts/run_linux_mac.sh          # GUI
 ./scripts/run_linux_mac.sh cli info file.pdf
@@ -25,7 +25,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 python run.py                       # GUI
-python -m leafkit.cli --help        # CLI
+python -m sekikit.cli --help        # CLI
 ```
 
 ### System packages
@@ -47,20 +47,20 @@ macOS output under `dist/` / `dist/release/`:
 
 | Artifact | Notes |
 |----------|--------|
-| `Leafkit-macos-<arch>.tar.gz` | `.app` or onedir |
+| `Sekikit-macos-<arch>.tar.gz` | `.app` or onedir |
 
 ### GitHub Actions
 
 Workflow **Package Unix** (`.github/workflows/package-unix.yml`):
 
 - Runs on **tag** `v*` or **workflow_dispatch**
-- Uploads **leafkit-macos** artifacts (among others)
+- Uploads **sekikit-macos** artifacts (among others)
 
 ### Run packaged macOS
 
 ```bash
-tar -xzf Leafkit-macos-arm64.tar.gz   # or x86_64
-open Leafkit.app
+tar -xzf Sekikit-macos-arm64.tar.gz   # or x86_64
+open Sekikit.app
 # If Gatekeeper blocks: right-click → Open (unsigned builds)
 ```
 

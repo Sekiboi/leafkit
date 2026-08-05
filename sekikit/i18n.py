@@ -4,7 +4,7 @@ English is the source language (string keys = English UI text).
 Other languages are JSON files in /locales that map English → translation.
 
 Usage:
-    from leafkit.i18n import _, init_i18n
+    from sekikit.i18n import _, init_i18n
     init_i18n()
     label = _("Merge PDFs")
 """
@@ -69,8 +69,8 @@ def load_language(code: str) -> str:
 
 
 def detect_language() -> str:
-    """LEAFKIT_LANG → LANG/LC_ALL → OS locale → en."""
-    for key in ("LEAFKIT_LANG", "LANGUAGE", "LC_ALL", "LC_MESSAGES", "LANG"):
+    """SEKIKIT_LANG → LANG/LC_ALL → OS locale → en."""
+    for key in ("SEKIKIT_LANG", "LANGUAGE", "LC_ALL", "LC_MESSAGES", "LANG"):
         raw = os.environ.get(key, "").strip()
         if raw:
             # LANGUAGE may be colon-separated (fr:en).

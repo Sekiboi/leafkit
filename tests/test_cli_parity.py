@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from leafkit.cli import main
-from leafkit import pdf_ops
+from sekikit.cli import main
+from sekikit import pdf_ops
 from tests.fixtures import make_messy
 
 

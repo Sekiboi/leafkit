@@ -4,23 +4,23 @@ cd /d "%~dp0"
 
 REM Default: run from source (.venv) so the version always matches the code you just edited.
 REM Packaged dist\ exe is used only when:
-REM   - LEAFKIT_USE_EXE=1, or
+REM   - SEKIKIT_USE_EXE=1, or
 REM   - no .venv exists (then fall back to dist if built).
-REM Force source even without that logic: LEAFKIT_USE_SOURCE=1
+REM Force source even without that logic: SEKIKIT_USE_SOURCE=1
 
-if /I "%LEAFKIT_USE_SOURCE%"=="1" goto :run_source
-if /I "%LEAFKIT_USE_EXE%"=="1" goto :run_exe
+if /I "%SEKIKIT_USE_SOURCE%"=="1" goto :run_source
+if /I "%SEKIKIT_USE_EXE%"=="1" goto :run_exe
 
 if exist "%~dp0.venv\Scripts\pythonw.exe" goto :run_source
 if exist "%~dp0.venv\Scripts\python.exe" goto :run_source
 
 :run_exe
-if exist "%~dp0dist\Leafkit\Leafkit.exe" (
-  start "" "%~dp0dist\Leafkit\Leafkit.exe"
+if exist "%~dp0dist\Sekikit\Sekikit.exe" (
+  start "" "%~dp0dist\Sekikit\Sekikit.exe"
   exit /b 0
 )
-if exist "%~dp0dist\Leafkit.exe" (
-  start "" "%~dp0dist\Leafkit.exe"
+if exist "%~dp0dist\Sekikit.exe" (
+  start "" "%~dp0dist\Sekikit.exe"
   exit /b 0
 )
 

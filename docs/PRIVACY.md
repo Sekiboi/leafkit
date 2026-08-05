@@ -1,6 +1,6 @@
 # Privacy
 
-**Leafkit does not upload your files.**
+**Sekikit does not upload your files.**
 
 - All processing is local.
 - No telemetry or crash phoning-home.
@@ -14,6 +14,6 @@
   - Crash/job log tails **redact** home paths, usernames, IPs, and emails.
   - First launch asks once; Settings can change it later.
   - Export is built **on your PC** only; you choose whether to paste it into a GitHub Issue.
-- Installed app data lives under **`%LOCALAPPDATA%\Leafkit`** (not Program Files).
+- Installed app data lives under **`%LOCALAPPDATA%\Sekikit`** (not Program Files).
 
 See [LIMITS.md](LIMITS.md) and [REPORTING.md](REPORTING.md).

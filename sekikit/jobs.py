@@ -10,8 +10,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable
 
-from leafkit import __version__
-from leafkit import pdf_ops
+from sekikit import __version__
+from sekikit import pdf_ops
 
 
 @dataclass
@@ -69,9 +69,9 @@ def make_password_provider(
 
 def job_log_path() -> Path:
     """Local job log (user data dir when installed — never uploaded)."""
-    from leafkit.prefs import user_data_dir
+    from sekikit.prefs import user_data_dir
 
-    return user_data_dir() / "leafkit_jobs.log"
+    return user_data_dir() / "sekikit_jobs.log"
 
 
 def _basename_only(paths: list[str]) -> list[str]:

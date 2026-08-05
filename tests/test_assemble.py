@@ -6,7 +6,7 @@ from pathlib import Path
 
 from pypdf import PdfWriter
 
-from leafkit import pdf_ops
+from sekikit import pdf_ops
 
 
 def _make(path: Path, pages: int) -> Path:
@@ -58,12 +58,12 @@ def test_assemble_bad_index(tmp_path: Path) -> None:
 
 def test_result_paths_ignores_org_item_tuples(tmp_path: Path) -> None:
     """Add-to-tray returns (path, page) tuples — must not be treated as outputs."""
-    from leafkit.app import LeafkitApp
+    from sekikit.app import SekikitApp
 
     a = _make(tmp_path / "a.pdf", 2)
     out = _make(tmp_path / "out.pdf", 1)
     fake = object()
     items = [(a, 0), (a, 1)]
-    assert LeafkitApp._result_paths(fake, items) == []
-    assert LeafkitApp._result_paths(fake, [out]) == [out]
-    assert LeafkitApp._result_paths(fake, out) == [out]
+    assert SekikitApp._result_paths(fake, items) == []
+    assert SekikitApp._result_paths(fake, [out]) == [out]
+    assert SekikitApp._result_paths(fake, out) == [out]

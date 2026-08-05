@@ -1,4 +1,4 @@
-"""Launch Leafkit from the project root: python run.py"""
+"""Launch Sekikit from the project root: python run.py"""
 
 from __future__ import annotations
 
@@ -9,13 +9,13 @@ from pathlib import Path
 
 def _crash_log_path() -> Path:
     try:
-        from leafkit.diagnostics import crash_log_path
+        from sekikit.diagnostics import crash_log_path
 
         return crash_log_path()
     except Exception:
         if getattr(sys, "frozen", False):
-            return Path(sys.executable).resolve().parent / "leafkit_crash.log"
-        return Path(__file__).resolve().parent / "leafkit_crash.log"
+            return Path(sys.executable).resolve().parent / "sekikit_crash.log"
+        return Path(__file__).resolve().parent / "sekikit_crash.log"
 
 
 def _write_crash(exc: BaseException) -> Path:
@@ -25,7 +25,7 @@ def _write_crash(exc: BaseException) -> Path:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(text, encoding="utf-8")
     except OSError:
-        path = Path.cwd() / "leafkit_crash.log"
+        path = Path.cwd() / "sekikit_crash.log"
         path.write_text(text, encoding="utf-8")
     return path
 
@@ -84,7 +84,7 @@ def main() -> None:
     if not getattr(sys, "frozen", False):
         _check_dependencies()
 
-    from leafkit.app import main as app_main
+    from sekikit.app import main as app_main
 
     app_main()
 
@@ -98,12 +98,12 @@ if __name__ == "__main__":
         if code not in (0, None):
             msg = str(code) if not isinstance(code, int) else f"Exit code {code}"
             if not isinstance(code, int):
-                _show_error("Leafkit — setup needed", msg)
+                _show_error("Sekikit — setup needed", msg)
             raise
     except Exception as exc:  # noqa: BLE001 — top-level crash barrier
         log_path = _write_crash(exc)
         _show_error(
-            "Leafkit crashed",
+            "Sekikit crashed",
             f"{exc}\n\nDetails saved to:\n{log_path}",
         )
         raise

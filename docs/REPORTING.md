@@ -1,10 +1,10 @@
 # Reporting bugs and crashes
 
-Leafkit is **offline-only**: nothing is sent automatically. We improve from **reports you choose to send**.
+Sekikit is **offline-only**: nothing is sent automatically. We improve from **reports you choose to send**.
 
 ## Diagnostics is optional (default off) and anonymous
 
-On **first launch**, Leafkit asks once whether to enable **anonymous Diagnostics export**.  
+On **first launch**, Sekikit asks once whether to enable **anonymous Diagnostics export**.  
 The checkbox defaults to **unchecked** (off). You can change it anytime in **Settings**.
 
 | Diagnostics off (default) | Diagnostics on |
@@ -23,7 +23,7 @@ Nothing is ever uploaded by the app. Export only builds a text file/clipboard pa
 2. Enable **anonymous** Diagnostics in **Settings** (if you left it off at first run).
 3. **About (F1) → Copy diagnostics** (or **Save diagnostics…**).
 4. Open a GitHub issue:  
-   https://github.com/Sekiboi/leafkit/issues/new/choose  
+   https://github.com/Sekiboi/sekikit/issues/new/choose  
    - **Bug report** — wrong output, UI glitch, error message  
    - **Crash report** — app exit / crash dialog  
 5. Paste the diagnostics block and describe steps.
@@ -34,16 +34,16 @@ Nothing is ever uploaded by the app. Export only builds a text file/clipboard pa
 |----------|----------------|
 | Version, coarse OS (system + release + arch), Python, frozen/exe | Name, account, device ID, hostname |
 | Review mode, PyMuPDF / Ghostscript present (yes/no) | PDF file **content** |
-| Last lines of `leafkit_jobs.log` (**basenames**; paths redacted) | Full folder paths / usernames |
-| Last lines of `leafkit_crash.log` if present (**paths redacted**) | Passwords, telemetry |
+| Last lines of `sekikit_jobs.log` (**basenames**; paths redacted) | Full folder paths / usernames |
+| Last lines of `sekikit_crash.log` if present (**paths redacted**) | Passwords, telemetry |
 
 ## Local log files
 
 | File | Where |
 |------|--------|
-| `leafkit_crash.log` | `%LOCALAPPDATA%\Leafkit` when installed; project root from source |
-| `leafkit_jobs.log` | Same location (operation history, basenames) |
-| `leafkit_diagnostics_*.txt` | If you used **Save diagnostics…** |
+| `sekikit_crash.log` | `%LOCALAPPDATA%\Sekikit` when installed; project root from source |
+| `sekikit_jobs.log` | Same location (operation history, basenames) |
+| `sekikit_diagnostics_*.txt` | If you used **Save diagnostics…** |
 
 ## Privacy rules for reporters
 

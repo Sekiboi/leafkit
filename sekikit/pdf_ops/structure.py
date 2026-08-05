@@ -6,7 +6,7 @@ from typing import Callable
 
 from pypdf import PdfReader, PdfWriter
 
-from leafkit.pdf_ops._core import (
+from sekikit.pdf_ops._core import (
     PAGE_SIZES,
     PasswordProvider,
     PdfOpsError,

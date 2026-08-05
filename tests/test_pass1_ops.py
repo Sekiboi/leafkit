@@ -6,8 +6,8 @@ from pathlib import Path
 
 import pytest
 
-from leafkit import pdf_ops
-from leafkit.cli import main
+from sekikit import pdf_ops
+from sekikit.cli import main
 from tests.fixtures import make_messy
 
 

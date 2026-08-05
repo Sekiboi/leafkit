@@ -12,7 +12,7 @@ Package layout:
 """
 from __future__ import annotations
 
-from leafkit.pdf_ops._core import (
+from sekikit.pdf_ops._core import (
     PAGE_SIZES,
     PasswordProvider,
     PdfOpsError,
@@ -41,7 +41,7 @@ from leafkit.pdf_ops._core import (
     parse_page_range,
     take_warnings,
 )
-from leafkit.pdf_ops.compress import (
+from sekikit.pdf_ops.compress import (
     COMPRESS_PRESETS,
     _compress_ghostscript,
     _compress_rerender,
@@ -50,7 +50,7 @@ from leafkit.pdf_ops.compress import (
     compress_pdf,
     find_ghostscript,
 )
-from leafkit.pdf_ops.pagenum import (
+from sekikit.pdf_ops.pagenum import (
     WATCH_ACTIONS,
     _box_in_outer_margin,
     _collect_margin_content_boxes,
@@ -65,7 +65,7 @@ from leafkit.pdf_ops.pagenum import (
     op_then_renumber,
     renumber_pages,
 )
-from leafkit.pdf_ops.structure import (
+from sekikit.pdf_ops.structure import (
     _bookmark_split_indices,
     _fit_page_to_size,
     _split_by_size,
@@ -86,7 +86,7 @@ from leafkit.pdf_ops.structure import (
     split_item_segments,
     split_pdf,
 )
-from leafkit.pdf_ops.transform import (
+from sekikit.pdf_ops.transform import (
     _hard_crop_margins,
     _save_fitz_atomic,
     clean_metadata,
@@ -101,7 +101,7 @@ from leafkit.pdf_ops.transform import (
     nup_pdf,
     stamp_image,
 )
-from leafkit.pdf_ops.watch import list_watch_pdfs, watch_process_file
+from sekikit.pdf_ops.watch import list_watch_pdfs, watch_process_file
 
 __all__ = [
     "PAGE_SIZES",
