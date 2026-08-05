@@ -233,6 +233,21 @@ MIT — free for personal and commercial use. See [LICENSE](LICENSE).
 
 Leafkit never phones home. Your PDFs never leave your machine unless *you* copy them somewhere.
 
+### Optional anonymous diagnostics (you will be asked)
+
+On **first launch**, Leafkit may ask whether to enable **anonymous diagnostics export**. The checkbox **defaults off**.
+
+| If you leave it **off** (default) | If you turn it **on** |
+|-----------------------------------|------------------------|
+| No Copy/Save diagnostics in About | About can build a **local** text report |
+| App still works fully offline | Still **offline** — nothing is uploaded by the app |
+
+**Anonymous means:** no name, account, email, device ID, or hostname. Crash/job tails redact home paths and similar. No PDF content or passwords.
+
+**Important:** Leafkit does **not** send diagnostics anywhere. Enabling only lets *you* copy or save a report. Only if *you* paste it into a GitHub Issue (or email, etc.) does it leave your PC.
+
+You can change this anytime in **Settings**. Details: [docs/PRIVACY.md](docs/PRIVACY.md) and [docs/REPORTING.md](docs/REPORTING.md).
+
 See **[docs/PRIVACY.md](docs/PRIVACY.md)** and **[docs/LIMITS.md](docs/LIMITS.md)** for the full honesty list (RAM, signatures, scan-compress, unsigned builds, etc.).
 
 ## Translations (community)
