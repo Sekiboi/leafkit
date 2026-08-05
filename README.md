@@ -42,7 +42,7 @@ Leafkit is a small offline app for everyday **page structure** work: put pages t
 
 ## Icon
 
-Minimal **bird in flight** on open-sky blue — offline software, free to use. Used for:
+**Stack of pages + leaf tip** on open-sky blue (same blue/white palette) — pages toolkit, Leafkit name. Used for:
 
 - Window title bar + taskbar  
 - In-app header  

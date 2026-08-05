@@ -1,4 +1,4 @@
-# Build Leafkit Windows binaries with the freedom-bird icon.
+# Build Leafkit Windows binaries with the pages+leaf icon.
 $ErrorActionPreference = "Stop"
 $Root = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 Set-Location $Root

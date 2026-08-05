@@ -1,4 +1,4 @@
-# Create Desktop + Start Menu shortcuts for Leafkit with the freedom-bird icon.
+# Create Desktop + Start Menu shortcuts for Leafkit with the app icon.
 #
 # Default: pythonw + run.py when .venv exists (always matches current source version).
 # Packaged exe: pass -UsePackagedExe after building with scripts\build_exe.ps1
