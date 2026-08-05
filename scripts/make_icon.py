@@ -1,6 +1,7 @@
 """Regenerate assets/leafkit.png and assets/leafkit.ico.
 
-Glyph: stack of pages + leaf tip (Leafkit). Same blue/white as the original bird mark.
+Minimal glyph: one abstract leaf that also reads as a folded page.
+Same blue/white palette as before.
 """
 
 from __future__ import annotations
@@ -11,7 +12,6 @@ from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parent.parent
 ASSETS = ROOT / "assets"
-# Same palette as the original bird mark
 PLATE = (47, 111, 168, 255)
 WHITE = (255, 255, 255, 255)
 
@@ -29,71 +29,46 @@ def draw_icon(size: int, with_plate: bool = True) -> Image.Image:
             fill=PLATE,
         )
 
-    m = 0.18 if with_plate else 0.10
+    m = 0.20 if with_plate else 0.12
 
     def P(u: float, v: float) -> tuple[float, float]:
         return (m * s + u * (1 - 2 * m) * s, m * s + v * (1 - 2 * m) * s)
 
     ink = WHITE if with_plate else PLATE
-    # Detail lines only on the blue plate (carve into white)
     cut = PLATE if with_plate else None
-    stroke = max(1, int(round(s * 0.028)))
 
-    def page_poly(
-        x0: float,
-        y0: float,
-        x1: float,
-        y1: float,
-        fold: float = 0.0,
-    ) -> list[tuple[float, float]]:
-        if fold <= 0:
-            return [P(x0, y0), P(x1, y0), P(x1, y1), P(x0, y1)]
-        return [
-            P(x0, y0),
-            P(x1 - fold, y0),
-            P(x1, y0 + fold),
-            P(x1, y1),
-            P(x0, y1),
-        ]
-
-    # Stack: back → middle → front (offsets read as depth)
-    for poly in (
-        page_poly(0.06, 0.30, 0.76, 0.94),
-        page_poly(0.14, 0.22, 0.84, 0.86),
-        page_poly(0.22, 0.14, 0.92, 0.78, fold=0.11),
-    ):
-        d.polygon(poly, fill=ink)
-
-    if cut is not None:
-        d.line([P(0.14, 0.30), P(0.76, 0.30)], fill=cut, width=stroke)
-        d.line([P(0.22, 0.22), P(0.84, 0.22)], fill=cut, width=stroke)
-        for t in (0.36, 0.46, 0.56, 0.66):
-            d.line(
-                [P(0.32, t), P(0.80, t)],
-                fill=cut,
-                width=max(1, stroke - 1),
-            )
-        d.line([P(0.81, 0.14), P(0.92, 0.25)], fill=cut, width=stroke)
-
-    # Leaf tip from the top of the stack
-    leaf = [
-        P(0.50, 0.00),
-        P(0.64, 0.06),
-        P(0.72, 0.16),
-        P(0.62, 0.20),
-        P(0.54, 0.16),
-        P(0.46, 0.18),
-        P(0.38, 0.14),
-        P(0.40, 0.06),
+    # Single shape: leaf / folded page
+    # Pointed tip at top (leaf), straight-ish base and corner fold (page).
+    glyph = [
+        P(0.50, 0.06),  # tip
+        P(0.78, 0.28),  # right shoulder
+        P(0.88, 0.52),  # right mid (leaf bulge / page edge)
+        P(0.78, 0.78),  # lower right
+        P(0.50, 0.94),  # base point (stem / page bottom)
+        P(0.22, 0.78),  # lower left
+        P(0.12, 0.52),  # left mid
+        P(0.22, 0.28),  # left shoulder
     ]
-    d.polygon(leaf, fill=ink)
+    d.polygon(glyph, fill=ink)
 
+    # One crease: leaf vein + page fold (same line)
     if cut is not None:
+        stroke = max(1, int(round(s * 0.035)))
         d.line(
-            [P(0.50, 0.02), P(0.54, 0.16)],
+            [P(0.50, 0.12), P(0.50, 0.86)],
             fill=cut,
-            width=max(1, int(s * 0.02)),
+            width=stroke,
         )
+        # Small fold tick at upper-right (page dog-ear hint)
+        d.line(
+            [P(0.50, 0.28), P(0.72, 0.40)],
+            fill=cut,
+            width=max(1, stroke - 1),
+        )
+    else:
+        # Bare mark: thin center cut via overdraw with transparent-ish gap —
+        # use a slightly narrower second color isn't available; skip detail.
+        pass
 
     return img
 
