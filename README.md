@@ -3,15 +3,12 @@
 **Offline PDF page toolkit.** Merge, extract, split, organize, and compress PDFs on your PC — no accounts, no uploads.  
 Primary GUI target: **Windows**. Linux and macOS are available but **untested** on real hardware ([Linux](docs/LINUX.md), [macOS](docs/MAC.md)).
 
-Just the pages you need.  
-*(Formerly JustPages — renamed in v0.14.0 for a unique brand.)*
-
 ### Status: public beta (`0.15.0-beta.1`)
 
 Works for real offline PDF work; still wants feedback and polish. Prefer filing issues over silent frustration.
 
 **Download (Windows):** [Latest Release — Setup installer](https://github.com/Sekiboi/leafkit/releases/latest)  
-*(Use the `Leafkit-*-Setup.exe` asset. SmartScreen may warn on unsigned freeware — expected until reputation builds.)*
+*(Use the `Leafkit-*-Setup.exe` asset. SmartScreen may warn on unsigned freeware*
 
 ### Free forever
 
