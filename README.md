@@ -5,7 +5,7 @@ Primary GUI target: **Windows**. Linux and macOS are available but **untested** 
 
 ### Status: public beta (`0.15.0-beta.1`)
 
-Works for real offline PDF work; still wants feedback and polish. Prefer filing issues over silent frustration.
+Works for real offline PDF work; still wants feedback and polish.
 
 **Download (Windows):** [Latest Release — Setup installer](https://github.com/Sekiboi/leafkit/releases/latest)  
 *(Use the `Leafkit-*-Setup.exe` asset. SmartScreen may warn on unsigned freeware*
