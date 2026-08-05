@@ -6,6 +6,7 @@ Creates organized result folders and a RESULTS.md report. Offline only.
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import time
 import traceback
@@ -18,7 +19,11 @@ from PIL import Image
 from leafkit import __version__, pdf_ops
 from leafkit.cli import main as cli_main
 
-SRC = Path(r"C:\Users\adamt\OneDrive\Desktop\PDF Test")
+# Override with LEAFKIT_PDF_TEST if Desktop layout differs on this machine.
+SRC = Path(
+    os.environ.get("LEAFKIT_PDF_TEST")
+    or (Path.home() / "Desktop" / "PDF Test")
+)
 OUT = SRC / f"leafkit_real_test_v{__version__}"
 
 

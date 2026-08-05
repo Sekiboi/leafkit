@@ -147,7 +147,7 @@ def _retry(
     base_delay: float = 0.12,
     what: str = "File operation",
 ) -> object:
-    """Retry on Windows lock / AV / OneDrive races."""
+    """Retry on Windows lock / antivirus / file-sync races."""
     last: BaseException | None = None
     for i in range(attempts):
         try:
@@ -159,7 +159,7 @@ def _retry(
             time.sleep(base_delay * (i + 1))
     raise PdfOpsError(
         f"{what} failed — the file may be open in another program, "
-        f"or a sync tool (OneDrive) is locking it.\n\n{last}"
+        f"or a sync/antivirus tool is locking it.\n\n{last}"
     ) from last
 
 

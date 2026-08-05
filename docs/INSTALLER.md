@@ -72,12 +72,12 @@ When you have a code-signing certificate:
 
 1. Sign `dist\Leafkit\Leafkit.exe` (and binaries if required).  
 2. Sign `Leafkit-*-Setup.exe`.  
-3. Publish checksums + optional VirusTotal link.
+3. Publish checksums with the release.
 
 Unsigned freeware often triggers SmartScreen until reputation builds — expected; not a code bug.
 
 ## Scope note
 
-- **Inno Setup** is the right fit for our size (same class as many indie tools).  
-- Full **MSI/WiX** is optional later for enterprise SCCM; not required for consumer install-and-play.  
+- **Inno Setup** is the current Windows packaging tool for this project (required to build Setup.exe).  
+- Other package formats are optional later if needed.  
 - macOS/Linux use `scripts/build_unix.sh` + CI artifacts (see [LINUX_MAC.md](LINUX_MAC.md)).

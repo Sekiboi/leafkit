@@ -15,7 +15,7 @@ Free forever, offline only. This document states what we **do well** and what we
 - Writes go to a temp file, are re-opened to check page count, then renamed into place.
 - We refuse to overwrite an input path with an output path.
 - Unique names (`_1`, `_2`, …) avoid clobbering existing files.
-- Retries on common Windows lock races (viewer open, OneDrive, antivirus).
+- Retries on common Windows lock races (viewer open, file sync, antivirus).
 
 ## Known limits (by design or cost)
 
@@ -47,12 +47,12 @@ Free forever, offline only. This document states what we **do well** and what we
 
 ## Scope (what Leafkit is)
 
-Leafkit is an **offline page-structure toolkit**: organize, merge, split, compress, clean, encrypt, and related tools. It is **not** a full PDF editor: no OCR, in-PDF text rewrite, Office conversion, form designer, or certificate-signing product.
+Leafkit is an **offline page-structure toolkit**: organize, merge, split, compress, clean, encrypt, and related tools. It is **not** a full PDF editor: no OCR, in-PDF text rewrite, document conversion suites, form designer, or certificate-signing product.
 
 ## What we will not add (scope)
 
 - Cloud sync, accounts, freemium
-- Full PDF editor, OCR, Office conversion
+- Full PDF editor, OCR, document conversion suites
 - Form designers, certificate digital-signature workflows as a product
 
 ## Reporting issues

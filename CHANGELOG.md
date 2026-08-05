@@ -316,7 +316,7 @@ English remains the source language; missing keys fall back to English.
 - **Atomic writes**: temp file → validate → rename (no half-written PDFs)
 - **Output validation**: re-open every result; check page count
 - **Same-path guard**: refuse to overwrite input files
-- **Retries** on locked files (OneDrive / antivirus / viewer)
+- **Retries** on locked files (file sync / antivirus / viewer)
 - **Disk space preflight** before heavy writes
 - **Warnings** for scan compress / grayscale (text becomes image)
 - **Messy fixture pack** + round-trip reliability tests
