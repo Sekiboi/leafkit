@@ -1,7 +1,7 @@
 # Leafkit
 
 **Offline PDF page toolkit.** Merge, extract, split, organize, and compress PDFs on your PC — no accounts, no uploads.  
-Primary GUI target: **Windows**. CLI + source GUI also work on **Linux/mac** (see [docs/LINUX_MAC.md](docs/LINUX_MAC.md)).
+Primary GUI target: **Windows**. Linux/mac are available but **untested** on real hardware (see [docs/LINUX_MAC.md](docs/LINUX_MAC.md)).
 
 Just the pages you need.  
 *(Formerly JustPages — renamed in v0.14.0 for a unique brand.)*
@@ -56,7 +56,7 @@ Regenerate: `python scripts/make_icon.py`
 ## Requirements
 
 - **Windows 10/11** (primary GUI + packaged `.exe`)
-- **Linux / macOS**: CLI, run-from-source GUI, and **CI/package builds** (tarball / AppImage / `.app`) — [docs/LINUX_MAC.md](docs/LINUX_MAC.md)
+- **Linux / macOS** *(untested on real hardware)*: CLI, run-from-source GUI, package scripts — [docs/LINUX_MAC.md](docs/LINUX_MAC.md)
 - Python 3.10+ **or** a Windows release binary from [Releases](https://github.com/Sekiboi/leafkit/releases)
 
 ## Does a git commit make it a real app?
@@ -179,6 +179,8 @@ Prefer the **onedir** build (`dist\Leafkit\Leafkit.exe`).
 
 ## Build Linux / macOS packages
 
+> **Untested:** Linux and macOS packaging/installs have not been validated on real machines. Use at your own risk; feedback welcome.
+
 ```bash
 chmod +x scripts/build_unix.sh
 ./scripts/build_unix.sh
@@ -190,6 +192,8 @@ GitHub Actions: workflow **Package Unix** (on tag `v*` or Run workflow). See [do
 
 ## Linux / macOS
 
+> **Untested on real hardware.** Scripts exist and CI may run; the maintainer has not verified installs on physical Linux/mac machines. Windows Setup is the supported path.
+
 ```bash
 # after venv + pip install -r requirements.txt
 ./scripts/run_linux_mac.sh          # GUI
@@ -197,7 +201,7 @@ GitHub Actions: workflow **Package Unix** (on tag `v*` or Run workflow). See [do
 ./scripts/run_linux_mac.sh test
 ```
 
-Full notes: **[docs/LINUX_MAC.md](docs/LINUX_MAC.md)**. CI runs pytest on Windows, Ubuntu, and macOS.
+Full notes: **[docs/LINUX_MAC.md](docs/LINUX_MAC.md)**.
 
 PRs welcome. Keep the scope small.
 

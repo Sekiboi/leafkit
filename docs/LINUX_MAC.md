@@ -1,7 +1,9 @@
 # Leafkit on Linux and macOS
 
 **Windows remains the primary polished GUI** (signed `.exe` when you have a cert).  
-Linux and macOS are first-class for **CLI**, **tests**, **run-from-source GUI**, and **CI-built packages**.
+Linux and macOS support **CLI**, **run-from-source GUI**, and **package scripts**.
+
+> **Untested on real hardware:** Linux and macOS installs have **not** been validated on physical machines by the maintainer. Scripts and CI may pass; expect rough edges. Prefer Windows Setup for a known-good install, or report issues if you try Unix.
 
 Everything stays **offline**, **MIT**, and **free forever**.
 
