@@ -13,8 +13,10 @@ env/
 
 # Packaging
 *.spec.bak
-JustPages.spec
-
+*.spec
+justpages_crash.log
+leafkit_crash.log
+leafkit_jobs.log
 # IDE / OS
 .idea/
 .vscode/
@@ -26,3 +28,12 @@ desktop.ini
 # Local test junk
 _test_output/
 *.pdf.bak
+
+# Machine-local shortcuts (paths differ per PC — regenerate with scripts\install_shortcuts.ps1)
+*.lnk
+
+# Local release bundles (do not auto-commit large binaries)
+release/
+justpages_jobs.log
+# Local installer copies (binaries ship via GitHub Releases only)
+dist/installer/

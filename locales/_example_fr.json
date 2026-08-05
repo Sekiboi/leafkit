@@ -1,0 +1,10 @@
+{
+  "_comment": "Rename to fr.json and translate. Keys must match en.json English strings. This file is an example only (underscore prefix = ignored).",
+  "Merge PDFs": "Fusionner les PDF",
+  "Add PDFs…": "Ajouter des PDF…",
+  "About": "À propos",
+  "Load pages": "Charger les pages",
+  "Reset pages": "Réinitialiser les pages",
+  "Compress…": "Compresser…",
+  "Free forever for everyone — no paid features, no accounts, no uploads.": "Gratuit pour toujours — pas de fonctions payantes, pas de comptes, pas d'envoi en ligne."
+}

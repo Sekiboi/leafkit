@@ -1,0 +1,15 @@
+Leafkit — offline PDF page toolkit
+
+• Free forever (MIT) — no accounts, no uploads, no freemium
+• Installs like a normal Windows app (Start Menu, optional Desktop icon)
+• Your settings and logs go under your user profile (%LOCALAPPDATA%\Leafkit),
+  not inside Program Files
+
+First launch
+  You will be asked once about optional Diagnostics (export a local bug-report
+  pack). This defaults to Off. Nothing is ever sent automatically.
+
+Privacy
+  See docs\PRIVACY.md after install, or github.com/Sekiboi/leafkit
+
+Thank you for using free software.

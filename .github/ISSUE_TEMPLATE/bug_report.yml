@@ -1,0 +1,96 @@
+name: Bug report
+description: Something didn't work as expected (wrong output, UI glitch, error message).
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve Leafkit. **Do not upload confidential PDFs** unless you deliberately choose to.
+
+        In the app: **About → Copy diagnostics** (or Save diagnostics) and paste below.
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Expected vs actual result.
+      placeholder: "I expected… but got…"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Numbered steps if possible.
+      placeholder: |
+        1. Add file…
+        2. Open Share → Compress…
+        3. …
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Leafkit version
+      description: From About or `leafkit --version`
+      placeholder: "0.13.1"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: OS
+      options:
+        - Windows 11
+        - Windows 10
+        - Linux
+        - macOS
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: how_run
+    attributes:
+      label: How did you run Leafkit?
+      options:
+        - Packaged .exe (dist/Leafkit)
+        - Source / launch.bat / pythonw run.py
+        - CLI only
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: pdf_kind
+    attributes:
+      label: About the PDF(s) (no need to attach)
+      options:
+        - Normal text PDF
+        - Scanned / image-only
+        - Password-protected
+        - Mixed / unknown
+        - N/A
+    validations:
+      required: false
+
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostics (from About → Copy diagnostics)
+      description: Paste the report here. It should not contain full paths or passwords.
+      render: text
+    validations:
+      required: false
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else?
+      description: Screenshots descriptions, error text, workarounds.
+    validations:
+      required: false

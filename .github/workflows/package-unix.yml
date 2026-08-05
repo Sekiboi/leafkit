@@ -1,0 +1,72 @@
+# Build Linux + macOS GUI packages (artifacts only; not notarized/signed).
+name: Package Unix
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: System deps (Tk)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-tk libtk8.6
+
+      - name: Download appimagetool
+        run: |
+          curl -fsSL -o /tmp/appimagetool \
+            https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
+          chmod +x /tmp/appimagetool
+          # extract if FUSE unavailable
+          /tmp/appimagetool --appimage-extract 2>/dev/null || true
+          if [[ -x squashfs-root/AppRun ]]; then
+            sudo mv squashfs-root /opt/appimagetool
+            sudo ln -sf /opt/appimagetool/AppRun /usr/local/bin/appimagetool
+          else
+            sudo cp /tmp/appimagetool /usr/local/bin/appimagetool
+          fi
+
+      - name: Build
+        run: |
+          chmod +x scripts/build_unix.sh scripts/run_linux_mac.sh
+          ./scripts/build_unix.sh
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: leafkit-linux
+          path: dist/release/*
+          if-no-files-found: error
+
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build
+        run: |
+          chmod +x scripts/build_unix.sh scripts/run_linux_mac.sh
+          ./scripts/build_unix.sh
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: leafkit-macos
+          path: dist/release/*
+          if-no-files-found: error

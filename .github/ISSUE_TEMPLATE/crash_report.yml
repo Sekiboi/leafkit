@@ -1,0 +1,71 @@
+name: Crash report
+description: The app closed, froze hard, or showed a crash dialog.
+title: "[Crash] "
+labels: ["bug", "crash"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Crashes often write `leafkit_crash.log` next to the app (or project folder).
+
+        **About → Copy diagnostics** includes the last crash log lines (if any).
+
+        Do **not** attach confidential PDFs.
+
+  - type: textarea
+    id: when
+    attributes:
+      label: When did it crash?
+      description: What were you doing? (e.g. Compress scan, Organize load, startup)
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Leafkit version
+      placeholder: "0.13.1"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: OS
+      options:
+        - Windows 11
+        - Windows 10
+        - Linux
+        - macOS
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: how_run
+    attributes:
+      label: How did you run Leafkit?
+      options:
+        - Packaged .exe (dist/Leafkit)
+        - Source / launch.bat
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostics paste
+      description: From About → Copy diagnostics (preferred).
+      render: text
+    validations:
+      required: false
+
+  - type: textarea
+    id: crash_raw
+    attributes:
+      label: Crash log (if not in diagnostics)
+      description: Paste contents of leafkit_crash.log if you have it.
+      render: text
+    validations:
+      required: false

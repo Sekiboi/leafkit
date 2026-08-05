@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "justpages"
-version = "0.1.0"
-description = "Offline PDF page toolkit: merge, extract, split, rotate — no upload."
+name = "leafkit"
+version = "0.15.0b1"
+description = "Offline PDF page toolkit with CLI — free forever, no paid tier."
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.10"
@@ -22,18 +22,22 @@ dependencies = [
   "pypdf>=5.0.0",
   "customtkinter>=5.2.0",
   "Pillow>=10.0.0",
+  "tkinterdnd2>=0.3.0",
+  "pymupdf>=1.24.0",
+  "cryptography>=3.1",
 ]
 
 [project.scripts]
-justpages = "justpages.app:main"
+leafkit = "leafkit.cli:main"
+leafkit-gui = "leafkit.app:main"
 
 [project.urls]
-Homepage = "https://github.com/Sekiboi/justpages"
-Repository = "https://github.com/Sekiboi/justpages"
-Issues = "https://github.com/Sekiboi/justpages/issues"
+Homepage = "https://github.com/Sekiboi/leafkit"
+Repository = "https://github.com/Sekiboi/leafkit"
+Issues = "https://github.com/Sekiboi/leafkit/issues"
 
 [tool.setuptools.packages.find]
-include = ["justpages*"]
+include = ["leafkit*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

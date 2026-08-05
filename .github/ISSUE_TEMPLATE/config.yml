@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Feature request
+    url: https://github.com/Sekiboi/leafkit/issues/new?labels=enhancement&title=%5BFeature%5D%20
+    about: Suggest a free offline page-toolkit improvement (not OCR/cloud/editor bloat).
+  - name: Docs / privacy questions
+    url: https://github.com/Sekiboi/leafkit/blob/main/docs/PRIVACY.md
+    about: Read PRIVACY and LIMITS before asking about uploads or telemetry.
