@@ -42,12 +42,12 @@ Free forever, offline only. This document states what we **do well** and what we
 | **Batch (all listed)** | Share checkbox only. Skips review-before-save. Esc stops **between** files. One shared encrypt password. Not merge/mix. |
 | **Extract text** | Selectable PDF text only — **not OCR**. Scans/image pages often empty. Layout not preserved. |
 | **Tray split before selected** | Cuts at selected tray positions (not first page). Multi-PDF tray OK. |
-| **Visual / box crop** | One rectangle for chosen pages (this page or all). Soft = boxes; hard = discard outside. Not per-page different rects; not a print-shop trim tool. |
+| **Interactive / box crop** | One rectangle for chosen pages (this page or all). Soft = boxes; hard = discard outside. Not per-page different rects; not a print-shop trim tool. |
 | **Stamp image** | One image, one position, optional opacity. Not tiled/diagonal watermark studio. |
 
-## Positioning (vs paid “Visual” tools)
+## Scope (what Leafkit is)
 
-Leafkit ships **offline page structure + share tools free** (organize tray, compress, crop, clean, encrypt, renumber, flatten, N-up, watch). It is **not** a full PDF editor: no OCR, text rewrite, Office conversion, form designer, or certificate signing — by design, so it can stay free forever.
+Leafkit is an **offline page-structure toolkit**: organize, merge, split, compress, clean, encrypt, and related tools. It is **not** a full PDF editor: no OCR, in-PDF text rewrite, Office conversion, form designer, or certificate-signing product.
 
 ## What we will not add (scope)
 

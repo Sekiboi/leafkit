@@ -1,6 +1,6 @@
 # Leafkit
 
-**Offline PDF page toolkit.** Merge, extract, split, and rotate PDFs — no accounts, no uploads, no nagware.  
+**Offline PDF page toolkit.** Merge, extract, split, organize, and compress PDFs on your PC — no accounts, no uploads.  
 Primary GUI target: **Windows**. CLI + source GUI also work on **Linux/mac** (see [docs/LINUX_MAC.md](docs/LINUX_MAC.md)).
 
 Just the pages you need.  
@@ -15,7 +15,7 @@ Works for real offline PDF work; still wants feedback and polish. Prefer filing 
 
 ### Free forever
 
-**There will never be paid features.** Everything we build is free for everyone — no freemium, no Pro tier, no trials, no watermarks, no accounts. MIT-licensed freeware, full stop. We’re bringing the true free internet back: useful tools that stay free.
+**There will never be paid features.** Everything we build is free for everyone — no freemium, no trials, no watermarks, no accounts. MIT-licensed freeware.
 
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -26,28 +26,23 @@ Works for real offline PDF work; still wants feedback and polish. Prefer filing 
   <img src="assets/leafkit.png" width="96" height="96" alt="Leafkit icon — bird in flight (freedom)">
 </p>
 
-## Why
+## What it does
 
-Most “free PDF tools” either:
-
-- upload your files to someone else’s server, or
-- bury basic page ops under freemium junk and giant installers
-
-**Leafkit** = **PDFsam Basic + the Visual tools people usually pay for** — free, offline, MIT.
+Leafkit is a small offline app for everyday **page structure** work: put pages together, take them apart, clean them up for sharing, keep files on this computer.
 
 | Action | What it does |
 |--------|----------------|
 | **Organize** | Multi-PDF **page tray**: load/add pages, reorder, preview, save combined; extract/remove/rotate |
-| **Share** | Compress, clean, encrypt/unlock, crop (margin + **visual**), resize, reverse, **stamp image**, extract text, images→PDF, N-up, grayscale, **page numbers**, flatten |
+| **Share** | Compress, clean, encrypt/unlock, crop (margin + interactive), resize, reverse, **stamp image**, extract text, images→PDF, N-up, grayscale, **page numbers**, flatten |
 | **Merge** | Combine PDFs; ranges; bookmarks; fit size; optional **renumber after merge** |
 | **Watch** | Local folder batch (compress / grayscale / page numbers / renumber / flatten / clean) |
-| **Mix / Extract / Delete / Insert / Split / Rotate** | Full Basic-class page tools |
+| **Mix / Extract / Delete / Insert / Split / Rotate** | Page structure tools |
 | **Password** | Open protected PDFs (stays on your PC) |
 | **CLI** | Full toolkit: merge, split, mix, insert, images, assemble, compress, renumber, watch, … |
 
 ## Icon
 
-Minimal **bird in flight** on open-sky blue — freedom (offline, no lock-in). Used for:
+Minimal **bird in flight** on open-sky blue — offline software, free to use. Used for:
 
 - Window title bar + taskbar  
 - In-app header  
@@ -206,7 +201,7 @@ Full notes: **[docs/LINUX_MAC.md](docs/LINUX_MAC.md)**. CI runs pytest on Window
 
 ## Roadmap
 
-See **[ROADMAP.md](ROADMAP.md)** — path to PDFsam Basic parity plus Visual-class tools (organize, compress, clean…) **all free, forever**, without becoming a full PDF editor and without ever adding a paid tier.
+See **[ROADMAP.md](ROADMAP.md)** — scope, phases, and free-forever principles (page toolkit, not a full PDF editor; no paid tier).
 
 PRs welcome. Keep the scope small.
 

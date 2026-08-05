@@ -248,10 +248,7 @@ def split_pdf(
     mode:
       - "each": one file per page
       - "every_n": groups of N pages
-      - "even": even-numbered pages only (1-based 2,4,6…) each as file? 
-        No — PDFsam "split even/odd" usually means split into two files 
-        OR split after even/odd. We implement:
-        - "even_odd_files": two outputs — all even pages, all odd pages
+      - "even_odd" / even-odd files: two outputs — all odd pages, all even pages
         - "at_pages": split before given 1-based page numbers
         - "size": parts targeting max_mb megabytes
         - "bookmarks": split at outline destinations of given level

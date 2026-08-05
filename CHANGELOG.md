@@ -84,7 +84,7 @@ All notable changes to Leafkit are documented here.
 - `docs/LINUX_MAC.md` first-class package docs
 - Windows `build_exe.ps1` hidden-imports for pdf_ops package modules
 
-## 0.13.0 — Visual-parity gameplan complete (Passes 1–5)
+## 0.13.0 — Multi-pass feature gameplan complete (Passes 1–5)
 
 ### Added (Pass 5)
 - **Stamp image** — overlay PNG/JPEG on pages (`stamp-image` CLI; Share More)
@@ -92,7 +92,7 @@ All notable changes to Leafkit are documented here.
 - Real-world harness covers decrypt/resize/reverse/blank/crop_box/stamp
 
 ### Milestone
-All in-scope PDFsam Visual–class items from the multi-pass gameplan are shipped free:
+In-scope page tools from the multi-pass gameplan are shipped free:
 decrypt, batch all listed, resize, reverse, blank, extract text, tray split, visual crop, stamp image.
 
 ## 0.12.4 — Pass 4: visual / box crop
@@ -100,7 +100,7 @@ decrypt, batch all listed, resize, reverse, blank, extract text, tray split, vis
 ### Added
 - **`crop_box`** — crop to PDF-point rectangle (bottom-left origin); soft or hard
 - **CLI** `crop-box --x0 --y0 --x1 --y1 [--hard] [--pages]`
-- **Share → Visual crop…** — drag rectangle on page preview; apply this page or all; hard optional
+- **Share → Visual crop…** — drag a rectangle on a page preview; apply this page or all; hard optional
 - Hard box crop is a risk-mode review op
 
 ## 0.12.3 — Pass 3: extract text + tray split
@@ -141,7 +141,7 @@ decrypt, batch all listed, resize, reverse, blank, extract text, tray split, vis
 ### Changed
 - **`leafkit.pdf_ops`** is a package: `_core`, `structure`, `compress`, `transform`, `pagenum`, `watch` (same public API)
 - Removed unused helpers (`run_job_safe`, `page_count_fast`, `ngettext`)
-- Docs: competitive positioning (PDFsam Basic + free Visual-class tools)
+- Docs: product scope and free-forever positioning
 
 ## 0.11.4 — Medium hardening (sessions, review, encrypt)
 
