@@ -30,7 +30,7 @@ Free forever, offline only. This document states what we **do well** and what we
 | **Password PDFs** | User password supported; exotic DRM is not. |
 | **Signed / certified PDFs** | Operations may break digital signatures (expected). |
 | **Code signing** | Official builds may be unsigned until a certificate is available; SmartScreen may warn. |
-| **Platform** | Windows is primary (packaged `.exe`). Linux/mac: CLI + run-from-source GUI; see `docs/LINUX_MAC.md`. |
+| **Platform** | Windows is primary (packaged `.exe`). Linux/mac: CLI + run-from-source GUI; see `docs/LINUX.md` and `docs/MAC.md` (both untested on real hardware). |
 | **Page numbers** | Simple Helvetica stamp; not a full header/footer designer. |
 | **Page numbers / renumber** | **Renumber** redacts a **full-width strip ≈ number font height** (not a tall footer block), then stamps. **Stamp** may shift to avoid margin text. **Not OCR**. Scanned image-only footers may remain. |
 | **Review before save** | Draft is staged as a hidden temp file, then **promoted only on Save**. Cancel discards the draft. Screen preview only — not a print proof. Mode: Off / Risk only / Always. CLI and Watch skip GUI review. |

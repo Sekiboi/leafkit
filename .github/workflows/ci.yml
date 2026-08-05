@@ -30,4 +30,7 @@ jobs:
           pip install pytest
 
       - name: Test
-        run: pytest -q
+        # Ensure repo root is importable (tests.fixtures) on all OSes
+        run: python -m pytest -q
+        env:
+          PYTHONPATH: ${{ github.workspace }}

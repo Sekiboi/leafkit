@@ -8,7 +8,7 @@ from PIL import Image
 
 from leafkit import jobs
 from leafkit import pdf_ops
-from fixtures import make_messy
+from tests.fixtures import make_messy
 
 
 def test_password_cache(tmp_path: Path) -> None:

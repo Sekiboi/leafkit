@@ -8,7 +8,7 @@ import pytest
 from pypdf import PdfReader
 
 from leafkit import pdf_ops
-from fixtures import make_messy
+from tests.fixtures import make_messy
 
 
 def test_atomic_merge_validates(tmp_path: Path) -> None:

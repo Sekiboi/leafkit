@@ -80,4 +80,4 @@ Unsigned freeware often triggers SmartScreen until reputation builds — expecte
 
 - **Inno Setup** is the current Windows packaging tool for this project (required to build Setup.exe).  
 - Other package formats are optional later if needed.  
-- macOS/Linux use `scripts/build_unix.sh` + CI artifacts (see [LINUX_MAC.md](LINUX_MAC.md)).
+- Linux and macOS use `scripts/build_unix.sh` + CI artifacts (see [LINUX.md](LINUX.md) and [MAC.md](MAC.md); both untested on real hardware).

@@ -1,7 +1,7 @@
 # Leafkit
 
 **Offline PDF page toolkit.** Merge, extract, split, organize, and compress PDFs on your PC — no accounts, no uploads.  
-Primary GUI target: **Windows**. Linux/mac are available but **untested** on real hardware (see [docs/LINUX_MAC.md](docs/LINUX_MAC.md)).
+Primary GUI target: **Windows**. Linux and macOS are available but **untested** on real hardware ([Linux](docs/LINUX.md), [macOS](docs/MAC.md)).
 
 Just the pages you need.  
 *(Formerly JustPages — renamed in v0.14.0 for a unique brand.)*
@@ -23,7 +23,7 @@ Works for real offline PDF work; still wants feedback and polish. Prefer filing 
 ![Beta](https://img.shields.io/badge/status-public%20beta-orange)
 
 <p align="center">
-  <img src="assets/leafkit.png" width="96" height="96" alt="Leafkit icon — bird in flight (freedom)">
+  <img src="assets/leafkit.png" width="96" height="96" alt="Leafkit icon — leaf / folded page">
 </p>
 
 ## What it does
@@ -56,14 +56,15 @@ Regenerate: `python scripts/make_icon.py`
 ## Requirements
 
 - **Windows 10/11** (primary GUI + packaged `.exe`)
-- **Linux / macOS** *(untested on real hardware)*: CLI, run-from-source GUI, package scripts — [docs/LINUX_MAC.md](docs/LINUX_MAC.md)
+- **Linux** *(untested on real hardware)*: CLI, run-from-source GUI, package scripts — [docs/LINUX.md](docs/LINUX.md)
+- **macOS** *(untested on real hardware)*: CLI, run-from-source GUI, package scripts — [docs/MAC.md](docs/MAC.md)
 - Python 3.10+ **or** a Windows release binary from [Releases](https://github.com/Sekiboi/leafkit/releases)
 
 ## Does a git commit make it a real app?
 
 **No.** Committing only saves source code on GitHub. It does **not** install an app on Windows.
 
-To get a normal app (bird icon, no `.vbs`):
+To get a normal app (app icon, no `.vbs`):
 
 ```powershell
 cd path\to\leafkit
@@ -177,31 +178,51 @@ pytest -q
 
 Prefer the **onedir** build (`dist\Leafkit\Leafkit.exe`).
 
-## Build Linux / macOS packages
+## Linux
 
-> **Untested:** Linux and macOS packaging/installs have not been validated on real machines. Use at your own risk; feedback welcome.
+> **Untested on real hardware.** Prefer Windows Setup for a known-good install.
 
-```bash
-chmod +x scripts/build_unix.sh
-./scripts/build_unix.sh
-# → dist/release/Leafkit-linux-*.tar.gz  (+ AppImage if appimagetool present)
-# → dist/release/Leafkit-macos-*.tar.gz
-```
-
-GitHub Actions: workflow **Package Unix** (on tag `v*` or Run workflow). See [docs/LINUX_MAC.md](docs/LINUX_MAC.md).
-
-## Linux / macOS
-
-> **Untested on real hardware.** Scripts exist and CI may run; the maintainer has not verified installs on physical Linux/mac machines. Windows Setup is the supported path.
+From source (after venv + `pip install -r requirements.txt`):
 
 ```bash
-# after venv + pip install -r requirements.txt
 ./scripts/run_linux_mac.sh          # GUI
 ./scripts/run_linux_mac.sh cli info file.pdf
 ./scripts/run_linux_mac.sh test
 ```
 
-Full notes: **[docs/LINUX_MAC.md](docs/LINUX_MAC.md)**.
+Packaged build on a Linux machine:
+
+```bash
+chmod +x scripts/build_unix.sh
+./scripts/build_unix.sh
+# → dist/release/Leafkit-linux-*.tar.gz  (+ AppImage if appimagetool present)
+```
+
+Full notes: **[docs/LINUX.md](docs/LINUX.md)**.
+
+## macOS
+
+> **Untested on real hardware.** Prefer Windows Setup for a known-good install.
+
+From source (after venv + `pip install -r requirements.txt`):
+
+```bash
+./scripts/run_linux_mac.sh          # GUI
+./scripts/run_linux_mac.sh cli info file.pdf
+./scripts/run_linux_mac.sh test
+```
+
+Packaged build on a Mac:
+
+```bash
+chmod +x scripts/build_unix.sh
+./scripts/build_unix.sh
+# → dist/release/Leafkit-macos-*.tar.gz
+```
+
+Full notes: **[docs/MAC.md](docs/MAC.md)**.
+
+GitHub Actions workflow **Package Unix** (tag `v*` or Run workflow) builds Linux and macOS artifacts separately.
 
 PRs welcome. Keep the scope small.
 
