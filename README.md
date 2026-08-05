@@ -199,10 +199,6 @@ GitHub Actions: workflow **Package Unix** (on tag `v*` or Run workflow). See [do
 
 Full notes: **[docs/LINUX_MAC.md](docs/LINUX_MAC.md)**. CI runs pytest on Windows, Ubuntu, and macOS.
 
-## Roadmap
-
-See **[ROADMAP.md](ROADMAP.md)** — scope, phases, and free-forever principles (page toolkit, not a full PDF editor; no paid tier).
-
 PRs welcome. Keep the scope small.
 
 ## License
