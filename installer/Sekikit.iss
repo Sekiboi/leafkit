@@ -83,14 +83,5 @@ Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#MyAppName}}
 ; Leave user data (%LOCALAPPDATA%\Sekikit) so prefs/logs survive reinstall.
 ; Optional: Type: filesandordirs; Name: "{localappdata}\Sekikit"
 
-[Code]
-function InitializeSetup(): Boolean;
-begin
-  Result := True;
-  if not DirExists(ExpandConstant('{#SourcePath}\..\dist\Sekikit')) then
-  begin
-    MsgBox('Build dist\Sekikit first (scripts\build_exe.ps1), then re-run the installer build.',
-      mbError, MB_OK);
-    Result := False;
-  end;
-end;
+; NOTE: Do NOT put developer path checks in [Code]/InitializeSetup — that runs on
+; end-user machines. Ensure dist\Sekikit exists before compiling (build_installer.ps1).
