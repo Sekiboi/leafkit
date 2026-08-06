@@ -8,6 +8,13 @@
 ; Sign Setup.exe later when you have a code-signing cert.
 ;
 ; Build: scripts\build_installer.ps1  (runs PyInstaller first)
+;
+; Compile-time only (ISPP) — never use [Code] InitializeSetup for this:
+; that runs on end-user PCs and will fail when dist\ is absent there.
+
+#ifnexist "..\dist\Sekikit\Sekikit.exe"
+  #error "Missing dist\Sekikit\Sekikit.exe — run scripts\build_exe.ps1 (or build_installer.ps1) first."
+#endif
 
 #define MyAppName "Sekikit"
 #ifndef MyAppVersion
@@ -68,8 +75,13 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-; Entire onedir PyInstaller tree (must exist: dist\Sekikit\*)
+; Entire onedir PyInstaller tree (must exist at compile time: dist\Sekikit\*)
 Source: "..\dist\Sekikit\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+; Extra docs (not inside PyInstaller tree)
+Source: "..\LICENSE"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\docs\PRIVACY.md"; DestDir: "{app}\docs"; Flags: ignoreversion
+Source: "..\docs\LIMITS.md"; DestDir: "{app}\docs"; Flags: ignoreversion
+Source: "..\docs\REPORTING.md"; DestDir: "{app}\docs"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Comment: "Offline PDF page toolkit — free forever"

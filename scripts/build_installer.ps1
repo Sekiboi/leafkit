@@ -21,6 +21,20 @@ $onedir = Join-Path $Root "dist\Sekikit\Sekikit.exe"
 if (-not (Test-Path $onedir)) {
     throw "Missing $onedir after build_exe.ps1"
 }
+# Sanity: onedir must include bundled assets (catches incomplete builds)
+$need = @(
+    (Join-Path $Root "dist\Sekikit\_internal"),
+    (Join-Path $Root "assets\sekikit.ico"),
+    (Join-Path $Root "docs\PRIVACY.md"),
+    (Join-Path $Root "LICENSE")
+)
+foreach ($p in $need) {
+    if (-not (Test-Path $p)) { throw "Missing required path for installer: $p" }
+}
+$internalAssets = Join-Path $Root "dist\Sekikit\_internal\assets\sekikit.ico"
+if (-not (Test-Path $internalAssets)) {
+    Write-Host "WARNING: $internalAssets missing - icon may be absent in installed app"
+}
 
 $localInno = Join-Path $env:LOCALAPPDATA "Programs\Inno Setup 6\ISCC.exe"
 # Outer @() keeps a single match as a 1-element array (else [0] is first char of path)
@@ -61,7 +75,7 @@ if ($ver -match 'beta|rc|a|b') {
     }
 }
 
-Write-Host "Compiling installer with $iscc (AppVersion=$ver, VersionInfo=$verInfo) ..."
+Write-Host "Compiling installer with $iscc AppVersion=$ver VersionInfo=$verInfo ..."
 & $iscc "/DMyAppVersion=$ver" "/DMyAppVersionInfo=$verInfo" $iss
 if ($LASTEXITCODE -ne 0) { throw "ISCC failed with $LASTEXITCODE" }
 

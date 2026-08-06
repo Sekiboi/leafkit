@@ -10,6 +10,8 @@ First launch
   pack). This defaults to Off. Nothing is ever sent automatically.
 
 Privacy
-  See docs\PRIVACY.md after install, or github.com/Sekiboi/sekikit
+  Files never leave your PC unless you copy them.
+  Details: https://github.com/Sekiboi/sekikit (docs/PRIVACY.md in the repo)
 
 Thank you for using free software.
+
